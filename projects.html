@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+    <link rel="stylesheet" href="project.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">Robert Pela</div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="project.html" class="active">Project</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1 class="jiggle-text">
+            <span class="name-letter">M</span>
+            <span class="name-letter">y</span>
+            <span class="name-letter"> </span>
+            <span class="name-letter">P</span>
+            <span class="name-letter">r</span>
+            <span class="name-letter">o</span>
+            <span class="name-letter">j</span>
+            <span class="name-letter">e</span>
+            <span class="name-letter">c</span>
+            <span class="name-letter">t</span>
+        </h1>
+        <p>Check out some of my latest projects below!</p>
+    </header>
+
+    <section class="Project-section">
+        <div class="project-card">
+            <img src="path/to/project1-image.jpg" alt="Project 1">
+            <div class="project-info">
+                <h2>Project 1</h2>
+                <p>A brief description of your project goes here.</p>
+                <a href="link-to-project1" class="project-link">View Project</a>
+            </div>
+        </div>
+        
+        <div class="project-card">
+            <img src="path/to/project2-image.jpg" alt="Project 2">
+            <div class="project-info">
+                <h2>Project 2</h2>
+                <p>A brief description of your project goes here.</p>
+                <a href="link-to-project2" class="project-link">View Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full-screen Modal Menu -->
+    <div id="overlay-menu">
+        <div class="close-btn">
+            <span>X</span>
+            <div class="underline"></div> <!-- Added underline div -->
+        </div>
+        <div class="overlay-content">
+            <ul class="overlay-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="project.html">Project</a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="https://linkedin.com" target="_blank"><img src="path/to/linkedin-icon.png" alt="LinkedIn"></a>
+                <a href="https://github.com" target="_blank"><img src="path/to/github-icon.png" alt="GitHub"></a>
+                <a href="https://twitter.com" target="_blank"><img src="path/to/twitter-icon.png" alt="Twitter"></a>
+            </div>
+        </div>
+    </div>
+
+    <script src="navBar.js"></script>
+</body>
+</html>
