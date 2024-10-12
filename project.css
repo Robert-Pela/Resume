@@ -15,7 +15,7 @@ body {
 nav {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Space between logo and right-side links */
     align-items: center;
     padding: 20px;
     background-color: #fff;
@@ -24,6 +24,113 @@ nav {
     top: 0;
     z-index: 1000;
 }
+
+/* Logo */
+.logo {
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Nav Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Space between nav links */
+    margin-left: auto; /* Push social icons to the right */
+}
+
+.nav-links li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.4rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #0073e6;
+}
+
+.nav-links li a.active::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: #0073e6;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+/* Social Media Icons in the nav bar */
+.social-icons {
+    display: flex;
+    align-items: center; /* Center vertically */
+    margin-left: 20px; /* Space between nav links and social icons */
+}
+.social-icons i {
+    font-size: 30px; /* Change this value to adjust the icon size */
+    color: #333; /* Optional: Change color if needed */
+    transition: transform 0.3s, filter 0.3s; /* Smooth hover effect */
+}
+
+.social-icons i:hover {
+    transform: scale(1.1); /* Enlarge on hover */
+    filter: brightness(0) saturate(1000%) invert(37%) sepia(100%) saturate(2116%) hue-rotate(203deg) brightness(97%) contrast(100%); /* Blue color */
+
+}
+/* Overlay Social Media Icons Styling */
+.overlay-social-icons {
+    display: flex;
+    justify-content: center; /* Center icons horizontally in the overlay */
+    margin-top: 20px; /* Space above the icons */
+}
+
+/* Overlay Social Media Icons Styling */
+.overlay-social-icons {
+    display: flex;
+    justify-content: center; /* Center icons horizontally in the overlay */
+    margin-top: 20px; /* Space above the icons */
+}
+
+.overlay-social-icons a {
+    margin: 0 10px; /* Space between icons */
+    font-size: 40px; /* Adjust icon size */
+    color: #333; /* Default color for icons */
+    transition: transform 0.3s, color 0.3s; /* Smooth hover effect */
+}
+
+.overlay-social-icons a:hover {
+    transform: scale(1.1); /* Enlarge on hover */
+    color: #0073e6; /* Change color on hover */
+}
+
+
+
+
+/* Hide social icons on mobile */
+@media (max-width: 768px) {
+    .social-icons {
+        display: none; /* Hide social links on mobile */
+    }
+}
+
+/* Social Media Icons Styling */
+.social-icons a {
+    margin-left: 15px; /* Space between icons */
+}
+
+.social-icons img {
+    width: 30px; /* Adjust icon size */
+    height: 30px; /* Adjust icon size */
+    transition: transform 0.3s; /* Smooth hover effect */
+}
+
+.social-icons img:hover {
+    transform: scale(1.1); /* Enlarge on hover */
+}
+
 
 /* Logo */
 .logo a {
@@ -37,34 +144,6 @@ nav {
     color: #7c7caf; /* Add a hover effect to the logo */
 }
 
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-}
-
-.nav-links li a {
-    color: #333;
-    text-decoration: none;
-    font-size: 1.4rem;
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-.nav-links li a:hover {
-    color: #7c7caf;
-}
-
-.nav-links li a.active::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 4px;
-    background-color: #7c7caf;
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-}
 
 /* Mobile Nav Bar (Hamburger) */
 .menu-toggle {
@@ -80,20 +159,21 @@ nav {
     margin: 4px 0;
     transition: 0.3s;
 }
-
 /* Overlay Menu */
 #overlay-menu {
-    display: none;
+    display: none; /* Hidden by default */
     position: fixed;
     top: 0;
     right: 0; /* Positioned on the right side */
-    width: 280px; /* Fixed width on wider screens */
+    width: 280px; /* Fixed width */
     height: 100%;
     background-color: #7c7caf; /* Purple background */
-    z-index: 9999;
+    z-index: 9999; /* Higher z-index to appear above other content */
     text-align: center;
-    padding-top: 50px;
+    padding-top: 50px; /* Padding for content */
 }
+
+
 
 .overlay-content {
     display: flex;
@@ -188,25 +268,6 @@ nav {
         width: calc(100% + 1400%); /* Keep the same for mobile */
         margin-left: -1400%; /* Negative margin for mobile */
     }
-}
-
-/* Social Icons in the overlay menu */
-.social-icons {
-    margin-top: 30px;
-}
-
-.social-icons a {
-    margin: 0 10px;
-}
-
-.social-icons img {
-    width: 40px;
-    height: 40px;
-    transition: transform 0.3s;
-}
-
-.social-icons img:hover {
-    transform: scale(1.2); /* Enlarge on hover */
 }
 
 /* Responsive styling */
@@ -306,57 +367,83 @@ header p {
     transform: translateY(0); /* Return to original position when clicked */
     box-shadow: 0 6px 12px rgba(0, 115, 230, 0.2); /* Pressed down shadow */
 }
-
+/* Portfolio Section */
+.portfolio-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Default: 3 cards per row on desktop */
+    gap: 20px; /* Space between cards */
+    padding: 40px; /* Padding around the section */
+    max-width: 100%; /* Ensure it uses full width */
+    margin: 0 auto; /* Center the section */
+}
 
 /* Portfolio Section */
 .portfolio-section {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
-    gap: 20px;
-    padding: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
+    grid-template-columns: repeat(3, 1fr); /* Default: 3 cards per row on desktop */
+    gap: 20px; /* Space between cards */
+    padding: 40px; /* Padding around the section */
+    max-width: 100%; /* Ensure it uses full width */
+    margin: 0 auto; /* Center the section */
 }
 
+/* Portfolio Section */
+.portfolio-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Default: 3 cards per row on desktop */
+    gap: 20px; /* Space between cards */
+    padding: 40px; /* Padding around the section */
+    max-width: 100%; /* Ensure it uses full width */
+    margin: 0 auto; /* Center the section */
+}
+
+/* Project Card */
 .project-card {
     background-color: white;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Increased shadow for depth */
     overflow: hidden;
     transition: transform 0.3s ease;
+    height: auto; /* Allow card to grow with content */
+    padding: 10px; /* Padding around the content */
 }
 
 .project-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.03); /* Slightly zoom in on hover */
 }
 
+/* Image Styles */
 .project-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+    width: calc(100% - 20px); /* Take full width minus padding */
+    height: 450px; /* Adjusted height for desktop */
+    padding: 10px; /* Padding around the image */
+    border-radius: 5px; /* Slight rounding of the image edges */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for image */
+    object-fit: cover; /* Cover the image while maintaining aspect ratio */
 }
 
 .project-info {
-    padding: 20px;
+    padding: 10px; /* Padding in project info */
     text-align: center;
 }
 
 .project-info h2 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
+    font-size: 1.6rem; /* Heading size */
+    margin-bottom: 10px; /* Space below heading */
 }
 
 .project-info p {
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Description size */
     color: #555;
-    margin-bottom: 15px;
+    margin-bottom: 15px; /* Space below description */
 }
 
+/* Project Link Button */
 .project-link {
     text-decoration: none;
     color: white;
-    background-color: #7c7caf;
-    padding: 10px 20px;
+    background-color: #0073e6;
+    padding: 10px 20px; /* Button padding */
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
@@ -365,15 +452,15 @@ header p {
     background-color: #005bb5;
 }
 
-/* Responsive Layout for Projects */
+/* Responsive Layout */
 @media (max-width: 768px) {
     .portfolio-section {
         grid-template-columns: 1fr; /* 1 project per row on mobile */
     }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 769px) and (max-width: 1024px) {
     .portfolio-section {
-        grid-template-columns: repeat(3, 1fr); /* 3 projects per row on desktop */
+        grid-template-columns: 1fr; /* 1 project per row for small desktops/tablets */
     }
 }
