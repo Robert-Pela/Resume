@@ -35,14 +35,13 @@ nav {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 30px; /* Space between nav links */
     margin-left: auto; /* Push links and icons to the right */
 }
 
 .social-icons {
     display: flex;
-    gap: 20px; /* Ensure enough space between nav-links and social icons */
-    margin-left: 40px; /* Add extra margin between nav-links and social icons */
+    align-items: center; /* Center vertically */
+    margin-left: 20px; /* Add extra margin between nav-links and social icons */
 }
 
 .nav-links li a {
@@ -51,7 +50,12 @@ nav {
     font-size: 1.4rem;
     position: relative;
     transition: all 0.3s ease;
+    height: 50px; /* Set a consistent height */
+    display: flex; /* Make the anchor a flex container */
+    align-items: center; /* Center the text vertically */
+    padding: 0 15px; /* Optional: add padding for horizontal spacing */
 }
+
 
 .nav-links li a:hover {
     color: #0073e6;
@@ -347,5 +351,115 @@ p {
 @media (max-width: 768px) {
     .NAME {
         font-size: 2.2rem; /* Smaller font size for mobile */
+    }
+}
+/* Social Media Icons Styling */
+.social-icons a {
+    margin-left: 15px; /* Space between icons */
+}
+
+.social-icons img {
+    width: 30px; /* Adjust icon size */
+    height: 30px; /* Adjust icon size */
+    transition: transform 0.3s; /* Smooth hover effect */
+}
+
+.social-icons img:hover {
+    transform: scale(1.1); /* Enlarge on hover */
+}
+.social-icons i {
+    font-size: 30px; /* Change this value to adjust the icon size */
+    color: #333; /* Optional: Change color if needed */
+    transition: transform 0.3s, filter 0.3s; /* Smooth hover effect */
+}
+
+.social-icons i:hover {
+    transform: scale(1.1); /* Enlarge on hover */
+    filter: brightness(0) saturate(1000%) invert(37%) sepia(100%) saturate(2116%) hue-rotate(203deg) brightness(97%) contrast(100%); /* Blue color */
+}
+.nav-links li {
+    display: flex;
+    align-items: center; /* Center the links vertically */
+}
+/* Social Media Icons Styling */
+.social-icons a {
+    margin-left: 15px; /* Space between icons */
+}
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* NAVBAR */
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px; /* Standardized padding for uniform height */
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin-left: auto; /* Push nav links and icons to the right */
+}
+
+.nav-links li {
+    display: flex;
+    align-items: center; /* Center the links vertically */
+}
+
+.nav-links li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.4rem;
+    position: relative;
+    transition: all 0.3s ease;
+    height: 50px; /* Consistent height */
+    display: flex;
+    align-items: center; /* Center text vertically */
+    padding: 0 15px;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center; /* Center vertically */
+    margin-left: 20px; /* Space between nav-links and social icons */
+}
+
+.social-icons a {
+    color: #333;
+    font-size: 1.8rem;
+    transition: color 0.3s;
+    margin-left: 15px; /* Space between icons */
+}
+
+.social-icons a:hover {
+    color: #0073e6;
+}
+
+.social-icons i {
+    font-size: 30px; /* Adjust icon size */
+    color: #333;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.social-icons i:hover {
+    transform: scale(1.1);
+    filter: brightness(0) saturate(1000%) invert(37%) sepia(100%) saturate(2116%) hue-rotate(203deg) brightness(97%) contrast(100%);
+}
+
+/* Responsive: Hide social icons on mobile */
+@media (max-width: 768px) {
+    .social-icons {
+        display: none;
     }
 }
