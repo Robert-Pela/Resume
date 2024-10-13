@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Add Font Awesome for Social Media Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <!-- NAVBAR -->
@@ -15,7 +17,38 @@
             <li><a href="about.html">About</a></li>
             <li><a href="projects.html">Projects</a></li>
         </ul>
+        <!-- Social Media Icons -->
+        <div class="social-icons">
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+        <!-- Hamburger Menu for Mobile -->
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
     </nav>
+
+    <!-- Overlay Menu for Mobile -->
+    <div id="overlay-menu">
+        <div class="close-btn">
+            <span>X</span>
+        </div>
+        <div class="overlay-content">
+            <ul class="overlay-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+            </ul>
+            <div class="overlay-social-icons">
+                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
 
     <!-- MAIN SECTION -->
     <div class="content-wrapper">
@@ -36,13 +69,12 @@
             </h1>
             <h1>I am a <span id="changing-text"></span><span class="cursor">|</span></h1>
             <p>This is the text that you want to replace from the original website to tell your own story. You can describe yourself, your experience, and what you’re passionate about here.</p>
-            <a href="#" class="about-btn">About Me</a>
+            <a href="about.html" class="about-btn">About Me</a>
         </div>
         <div class="image-section">
             <img src="Robert_Pela_Avatar.png" alt="Avatar" class="profile-image">
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>

@@ -8,33 +8,41 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
+    line-height: 1.6;
 }
 
 /* NAVBAR */
 nav {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Space between logo and right-side links */
     align-items: center;
-    padding: 20px;
+    padding: 30px;
     background-color: #fff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
     z-index: 1000;
-    box-sizing: border-box;
 }
 
 .logo {
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: #333;
     font-weight: bold;
 }
 
+/* Nav Links and Social Icons Aligned on the Right */
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 30px; /* Space between nav links */
+    margin-left: auto; /* Push links and icons to the right */
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px; /* Ensure enough space between nav-links and social icons */
+    margin-left: 40px; /* Add extra margin between nav-links and social icons */
 }
 
 .nav-links li a {
@@ -49,11 +57,10 @@ nav {
     color: #0073e6;
 }
 
-/* Updated active link styling */
+/* Active link styling */
 .nav-links li a.active {
     font-weight: bold;
-    color: #333;
-    text-decoration: none;
+    color: #000;
 }
 
 .nav-links li a.active::after {
@@ -61,37 +68,120 @@ nav {
     display: block;
     width: 100%;
     height: 4px;
-    background-color: #0073e6;
+    background-color: #0073e6; /* Blue underline */
     position: absolute;
-    bottom: -5px; /* Slightly below the text */
+    bottom: -5px;
     left: 0;
 }
 
-.nav-links li a:hover::after,
-.nav-links li a.active::after {
-    transition: width 0.3s ease;
-    width: 100%; /* Underline effect */
+/* Social Media Icons */
+.social-icons a {
+    color: #333;
+    font-size: 1.8rem;
+    transition: color 0.3s;
 }
 
-/* Responsive Navbar */
+.social-icons a:hover {
+    color: #0073e6;
+}
+
+/* Hide social media icons on mobile */
 @media (max-width: 768px) {
-    .nav-links {
-        flex-direction: column;
-        gap: 10px;
+    .social-icons {
+        display: none; /* Hide social icons on mobile */
     }
-    nav {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+}
+
+/* Hamburger Menu */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 4px 0;
+    transition: 0.3s;
+}
+
+/* Overlay Menu */
+#overlay-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100%;
+    background-color: #7c7caf;
+    z-index: 9999;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.overlay-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.overlay-nav-links {
+    list-style-type: none;
+    padding: 0;
+}
+
+.overlay-nav-links li {
+    margin: 15px 0;
+}
+
+.overlay-nav-links li a {
+    font-size: 1.8rem;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.overlay-nav-links li a:hover {
+    color: #ffd700;
+}
+
+/* Overlay Social Icons */
+.overlay-social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.overlay-social-icons a {
+    color: white;
+    font-size: 2rem;
+    transition: color 0.3s;
+}
+
+.overlay-social-icons a:hover {
+    transform: scale(1.1);
+    color: #ffd700;
+}
+
+/* Close Button for Overlay */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
 }
 
 /* Main Section */
 .content-wrapper {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 100px 50px; /* Adjusted padding to account for fixed navbar */
+    padding: 120px 50px;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -107,90 +197,20 @@ nav {
 }
 
 .profile-image {
-    width: 350px;
+    width: 400px;
     border-radius: 50%;
 }
 
-.intro h1 {
-    font-size: 3rem;
-    color: #333;
-    line-height: 1.5;
-}
-
-#changing-text {
-    color: #0073e6;
-    font-weight: bold;
-}
-
-.cursor {
-    font-weight: bold;
-    font-size: 3rem;
-    color: #0073e6;
-    animation: blink 0.7s step-end infinite;
-}
-
-@keyframes blink {
-    50% {
-        opacity: 0;
-    }
-}
-
-.intro p {
-    margin: 30px 0;
-    font-size: 1.4rem;
-    color: #555;
-    line-height: 1.7;
-}
-
-/* BUTTON */
-.about-btn {
-    display: inline-block;
-    padding: 15px 30px;
-    background-color: #0073e6;
-    color: white;
-    text-decoration: none;
-    font-size: 1.3rem;
-    border-radius: 30px; /* Rounded button */
-    border: none;
-    transition: all 0.2s ease;
-    box-shadow: 0 5px 10px rgba(0, 115, 230, 0.2);
-}
-
-.about-btn:hover {
-    background-color: #005bb5;
-    transform: translateY(2px); /* Pressed down effect */
-    box-shadow: 0 3px 8px rgba(0, 115, 230, 0.2); /* Reduced shadow */
-}
-
-.about-btn:active {
-    transform: translateY(5px); /* More pressed on click */
-    box-shadow: 0 2px 5px rgba(0, 115, 230, 0.1);
-}
-
-/* Responsive layout */
-@media (max-width: 768px) {
-    .content-wrapper {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .text-section {
-        padding-right: 0;
-    }
-
-    .profile-image {
-        margin-top: 20px;
-    }
-}
-
+/* Heading and Animated Text */
 .NAME {
-    font-size: 3rem;
-    color: #0073e6; /* Name in blue */
+    font-size: 3.5rem;
+    color: #0073e6;
+    margin-bottom: 20px;
 }
 
 .name-letter {
     display: inline-block;
-    transition: transform 0.2s;
+    transition: transform 0.2s ease;
 }
 
 .name-letter:hover {
@@ -209,5 +229,123 @@ nav {
     }
     75% {
         transform: rotate(-10deg);
+    }
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+    line-height: 1.5;
+}
+
+#changing-text {
+    color: #0073e6;
+    font-weight: bold;
+}
+
+.cursor {
+    font-weight: bold;
+    font-size: 2.5rem;
+    color: #0073e6;
+    animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+p {
+    margin: 30px 0;
+    font-size: 1.4rem;
+    color: #555;
+}
+
+/* Button Styling */
+.about-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #0073e6;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    border: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 5px 10px rgba(0, 115, 230, 0.2);
+}
+
+.about-btn:hover {
+    background-color: #005bb5;
+    transform: translateY(2px);
+    box-shadow: 0 3px 8px rgba(0, 115, 230, 0.2);
+}
+
+.about-btn:active {
+    transform: translateY(5px);
+    box-shadow: 0 2px 5px rgba(0, 115, 230, 0.1);
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column-reverse; /* Reverse the order of content */
+        text-align: center;
+    }
+
+    .profile-image {
+        margin-bottom: 20px; /* Add space below the image */
+        width: 300px; /* Adjust width */
+    }
+
+    .text-section {
+        padding-right: 0;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    /* For mobile, the overlay takes full width */
+    #overlay-menu {
+        left: 50%;
+        width: 50%;
+    }
+}
+
+/* Half-Desktop Screen Adjustments */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .content-wrapper {
+        flex-direction: column; /* Stack elements vertically */
+        text-align: center; /* Center align text */
+    }
+
+    .image-section {
+        order: -1; /* Move image section to the top */
+    }
+
+    .profile-image {
+        width: 350px; /* Adjust width if needed */
+        margin-bottom: 20px; /* Add space below the image */
+    }
+
+    .NAME {
+        font-size: 2.5rem; /* Adjust name size */
+    }
+
+    h1 {
+        font-size: 1.8rem; /* Adjust job title size */
+    }
+}
+
+/* Mobile Layout Adjustments */
+@media (max-width: 768px) {
+    .NAME {
+        font-size: 2.2rem; /* Smaller font size for mobile */
     }
 }

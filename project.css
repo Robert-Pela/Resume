@@ -115,7 +115,7 @@ nav {
 
 .overlay-social-icons a:hover {
     transform: scale(1.1); /* Enlarge on hover */
-    color: #0073e6; /* Change color on hover */
+    color: #ffd700;
 }
 
 

@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me</title>
-    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="about.css"> <!-- Updated to match the main CSS file -->
+    <!-- Add Font Awesome for Social Media Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <nav>
@@ -14,57 +16,68 @@
             <li><a href="about.html" class="active">About</a></li>
             <li><a href="projects.html">Projects</a></li>
         </ul>
+        <div class="social-icons">
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+        <!-- Hamburger Menu for Mobile -->
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
     </nav>
 
-    <div class="container">
-        <h1 class="jiggle-text">
-            <span class="name-letter">A</span>
-            <span class="name-letter">b</span>
-            <span class="name-letter">o</span>
-            <span class="name-letter">u</span>
-            <span class="name-letter">t</span>
-            <span class="name-letter"> </span>
-            <span class="name-letter">M</span>
-            <span class="name-letter">e</span>
-        </h1> <!-- Jiggle Text -->
-        <p>
-            Hi, I'm Robert Pela, and welcome to my website! Here, you'll find information about my projects, background, and more.
-        </p>
-
-        <!-- My Skill-Set Section -->
-        <section class="skills">
-            <h2>My Skill-Set</h2>
-            <div class="skills-grid">
-                <div class="skill">
-                    <img src="path/to/html-icon.png" alt="HTML Icon" class="skill-icon">
-                    <p>HTML</p>
-                </div>
-                <div class="skill">
-                    <img src="path/to/css-icon.png" alt="CSS Icon" class="skill-icon">
-                    <p>CSS</p>
-                </div>
-                <div class="skill">
-                    <img src="path/to/js-icon.png" alt="JavaScript Icon" class="skill-icon">
-                    <p>JavaScript</p>
-                </div>
-                <div class="skill">
-                    <img src="path/to/rust-icon.png" alt="Rust Icon" class="skill-icon">
-                    <p>Rust</p>
-                </div>
-                <div class="skill">
-                    <img src="path/to/godot-icon.png" alt="Godot Icon" class="skill-icon">
-                    <p>Godot</p>
-                </div>
-                <div class="skill">
-                    <img src="path/to/salesforce-icon.png" alt="Salesforce Icon" class="skill-icon">
-                    <p>Salesforce</p>
-                </div>
-                <div class="skill">
-                    <img src="path/to/github-icon.png" alt="GitHub Icon" class="skill-icon">
-                    <p>GitHub</p>
-                </div>
-            </div>
-        </section>
+    <div class="content-wrapper">
+        <div class="image-section">
+            <img src="Robert_Pela_About_Side.png" alt="Profile" class="profile-image">
+        </div>
+        <div class="text-section">
+            <h1 class="jiggle-text">
+                <span class="name-letter">A</span>
+                <span class="name-letter">b</span>
+                <span class="name-letter">o</span>
+                <span class="name-letter">u</span>
+                <span class="name-letter">t</span>
+                <span class="name-letter"> </span>
+                <span class="name-letter">M</span>
+                <span class="name-letter">e</span>
+            </h1> <!-- Jiggle Text -->
+            <p>
+                Hi, I'm Robert Pela, and welcome to my website! Here, you'll find information about my projects, background, and more.
+            </p>
+        </div>
     </div>
+
+    <!-- My Skill-Set Section -->
+    <section class="skills">
+        <h2>My Skill-Set</h2>
+        <div class="skills-grid">
+            <div class="skill-card html-card">
+                <i class="fab fa-html5 skill-icon html-icon"></i>
+            </div>
+            <div class="skill-card css-card">
+                <i class="fab fa-css3-alt skill-icon css-icon"></i>
+            </div>
+            <div class="skill-card js-card">
+                <i class="fab fa-js-square skill-icon js-icon"></i>
+            </div>
+            <div class="skill-card rust-card">
+                <i class="fa-brands fa-rust skill-icon rust-icon"></i>
+            </div>
+            <div class="skill-card godot-card">
+                <i class="fa fa-gamepad skill-icon godot-icon"></i> <!-- Icon for Godot -->
+            </div>
+            <div class="skill-card salesforce-card">
+                <i class="fas fa-briefcase skill-icon salesforce-icon"></i> <!-- Icon for Salesforce -->
+            </div>
+            <div class="skill-card github-card">
+                <i class="fab fa-github skill-icon"></i>
+            </div>
+        </div>
+    </section>
+
+    <script src="navBar.js"></script> <!-- Include your JavaScript file if needed -->
 </body>
 </html>
