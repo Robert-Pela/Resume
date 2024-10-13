@@ -133,6 +133,9 @@ nav {
     .social-icons {
         display: none; /* Hide social links on mobile */
     }
+    .nav-links {
+        display: none; /* Hide nav links on mobile */
+    }
 }
 
 /* Social Media Icons Styling */
@@ -316,7 +319,7 @@ nav {
 /* Header */
 header {
     text-align: center;
-    padding: 50px 0 50px; /* Increased padding to move the header down */
+    padding: 150px 0 50px; /* Increased padding to move the header down */
     background-color: #f0f0f0; /* White background */
     color: #333;
 }
@@ -598,81 +601,4 @@ header p {
 .project-info h2 a:hover {
     color: #0380fd; /* Darker blue on hover */
 }
-/* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-/* NAVBAR */
-nav {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 30px; /* Standardized padding for uniform height */
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    margin-left: auto; /* Push nav links and icons to the right */
-}
-
-.nav-links li {
-    display: flex;
-    align-items: center; /* Center the links vertically */
-}
-
-.nav-links li a {
-    color: #333;
-    text-decoration: none;
-    font-size: 1.4rem;
-    position: relative;
-    transition: all 0.3s ease;
-    height: 50px; /* Consistent height */
-    display: flex;
-    align-items: center; /* Center text vertically */
-    padding: 0 15px;
-}
-
-.social-icons {
-    display: flex;
-    align-items: center; /* Center vertically */
-    margin-left: 20px; /* Space between nav-links and social icons */
-}
-
-.social-icons a {
-    color: #333;
-    font-size: 1.8rem;
-    transition: color 0.3s;
-    margin-left: 15px; /* Space between icons */
-}
-
-.social-icons a:hover {
-    color: #0073e6;
-}
-
-.social-icons i {
-    font-size: 30px; /* Adjust icon size */
-    color: #333;
-    transition: transform 0.3s, filter 0.3s;
-}
-
-.social-icons i:hover {
-    transform: scale(1.1);
-    filter: brightness(0) saturate(1000%) invert(37%) sepia(100%) saturate(2116%) hue-rotate(203deg) brightness(97%) contrast(100%);
-}
-
-/* Responsive: Hide social icons on mobile */
-@media (max-width: 768px) {
-    .social-icons {
-        display: none;
-    }
-}
