@@ -17,7 +17,7 @@ nav {
     display: flex;
     justify-content: space-between; /* Space between logo and right-side links */
     align-items: center;
-    padding: 30px;
+    padding: 20px 30px; /* Standardized padding for uniform height */
     background-color: #fff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: fixed;
@@ -52,8 +52,7 @@ nav {
     height: 50px; /* Set a consistent height */
     display: flex; /* Make the anchor a flex container */
     align-items: center; /* Center the text vertically */
-    padding: 0 15px; /* Optional: add padding for horizontal spacing */
-}
+    padding: 0 15px; /* Adjusted padding for uniform spacing */}
 
 
 .nav-links li a:hover {

@@ -53,8 +53,7 @@ nav {
     height: 50px; /* Set a consistent height */
     display: flex; /* Make the anchor a flex container */
     align-items: center; /* Center the text vertically */
-    padding: 0 15px; /* Optional: add padding for horizontal spacing */
-}
+    padding: 0 15px; /* Adjusted padding for uniform spacing */}
 
 
 .nav-links li a:hover {
@@ -87,13 +86,6 @@ nav {
 
 .social-icons a:hover {
     color: #0073e6;
-}
-
-/* Hide social media icons on mobile */
-@media (max-width: 768px) {
-    .social-icons {
-        display: none; /* Hide social icons on mobile */
-    }
 }
 
 /* Hamburger Menu */
@@ -193,6 +185,7 @@ nav {
 .text-section {
     flex: 1;
     padding-right: 40px;
+    
 }
 
 .image-section {
@@ -278,6 +271,7 @@ p {
     border: none;
     transition: all 0.2s ease;
     box-shadow: 0 5px 10px rgba(0, 115, 230, 0.2);
+
 }
 
 .about-btn:hover {
@@ -291,36 +285,7 @@ p {
     box-shadow: 0 2px 5px rgba(0, 115, 230, 0.1);
 }
 
-/* Responsive Layout */
-@media (max-width: 768px) {
-    .content-wrapper {
-        flex-direction: column-reverse; /* Reverse the order of content */
-        text-align: center;
-    }
 
-    .profile-image {
-        margin-bottom: 20px; /* Add space below the image */
-        width: 300px; /* Adjust width */
-    }
-
-    .text-section {
-        padding-right: 0;
-    }
-
-    .menu-toggle {
-        display: flex;
-    }
-
-    .nav-links {
-        display: none;
-    }
-
-    /* For mobile, the overlay takes full width */
-    #overlay-menu {
-        left: 50%;
-        width: 50%;
-    }
-}
 
 /* Half-Desktop Screen Adjustments */
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -340,17 +305,13 @@ p {
 
     .NAME {
         font-size: 2.5rem; /* Adjust name size */
+        text-align: center;
     }
 
     h1 {
         font-size: 1.8rem; /* Adjust job title size */
-    }
-}
+        text-align: center;
 
-/* Mobile Layout Adjustments */
-@media (max-width: 768px) {
-    .NAME {
-        font-size: 2.2rem; /* Smaller font size for mobile */
     }
 }
 /* Social Media Icons Styling */
@@ -457,9 +418,142 @@ nav {
     filter: brightness(0) saturate(1000%) invert(37%) sepia(100%) saturate(2116%) hue-rotate(203deg) brightness(97%) contrast(100%);
 }
 
-/* Responsive: Hide social icons on mobile */
+/* Responsive: Adjust mobile layout */
 @media (max-width: 768px) {
-    .social-icons {
-        display: none;
+    nav {
+        padding: 10px 20px; /* Reduce navbar padding for mobile */
     }
+    .content-wrapper {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center horizontally */
+        text-align: center; /* Center text */
+        padding: 20px; /* Reduce padding to save space */
+    }
+
+    .profile-image {
+        display: block;
+        margin: 0 auto; /* Center the profile image */
+        margin-top: 70px; /* Increase space below the navbar */
+        margin-bottom: 10px; /* Reduce space below the image */
+        width: 80%; /* Adjust width to be more responsive */
+        max-width: 300px; /* Set a maximum width */
+        order: 1; /* Ensure the profile image is on top */
+    }
+    .text-section p{
+        display: block;
+        margin: 0 auto;
+    }
+
+    .text-section {
+        padding: 0; /* Remove padding for mobile */
+        order: 2; /* Keep text section below profile image */
+        margin-top: 5px; /* Add margin to reduce space between name and job title */
+        text-align: center;
+    }
+
+    #changing-text {
+        font-size: 1.6rem; /* Adjust font size for changing text */
+        margin-bottom: 5px; /* Reduce space below changing text */
+    }
+
+    .text-section h1 { /* Adjust font size for job title */
+        font-size: 1.6rem; /* Smaller font size for job title */
+        margin-bottom: 10px; /* Reduce space below */
+    }
+
+    .text-section h1.NAME {
+        text-align: center; /* Center the name */
+        font-size: 2.4rem; /* Smaller font size for mobile */
+        margin-bottom: 0px; /* Reduce space below the name */
+    }
+    .intro-text p {
+        font-size: 1.2rem; /* Smaller intro text size for mobile */
+        margin: 0 0 10px; /* Adjust margin */
+    }
+    .about-btn {
+        padding: 10px 20px; /* Reduce button padding */
+        font-size: 1rem; /* Smaller button text size */
+        margin-top: 10px; /* Reduce margin above the button */
+    }
+
+    /* Ensure the button fits within the screen */
+    .text-section .about-btn {
+        align-self: center; /* Center the button */
+    }
+    .menu-toggle {
+        display: flex; /* Show hamburger menu */
+    }
+    /* For mobile, the overlay takes full width */
+    #overlay-menu {
+        left: 50%;
+        width: 50%;
+    }
+    .social-icons {
+        display: none; /* Hide social icons on mobile */
+    }
+    .nav-links {
+        display: none; /* Hide nav links on mobile */
+    }
+}
+/* Align the Hello World text and name closer */
+.text-section p {
+    text-align: right;
+    margin-bottom: 0px; /* Adjust the spacing between Hello World and the name */
+}
+
+.text-section h1.NAME {
+    margin-bottom: 20px; /* Adjust to bring it closer to the image */
+    display: inline-block;
+    text-align: right;
+    vertical-align: middle; /* Align with the image */
+}
+
+/* Align the name to the image */
+.text-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: right;
+    height: 100%;
+    padding-right: 40px; /* Keep the original padding for spacing */
+}
+
+/* Align the button to the right */
+.text-section .about-btn {
+    align-self: flex-end; /* Align button to the right within the text-section */
+    margin-top: 20px; /* Add some space above the button */
+}
+.intro-text p {
+    font-size: 2rem; /* Increase only the size of this text */
+}
+/* Media Queries for Half Desktop and Mobile */
+@media (max-width: 1024px) {
+    .content-wrapper {
+        flex-direction: column; /* Ensure it's stacked on smaller screens */
+        align-items: center; /* Center horizontally */
+    }
+
+    .text-section {
+        text-align: center; /* Center text */
+    }
+    .intro-text p {
+        text-align: center; /* Center text */
+    }
+    .text-section p {
+        text-align: center;
+        margin-bottom: 0px; /* Adjust the spacing between Hello World and the name */
+    }
+    .text-section .about-btn {
+        align-self: center; /* Align button to the right within the text-section */
+        margin-top: 20px; /* Add some space above the button */
+    }
+    .text-section h1.NAME {
+
+        margin-bottom: 20px; /* Adjust to bring it closer to the image */
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle; /* Align with the image */
+    }
+
+    
 }
