@@ -30,6 +30,17 @@ nav {
     color: #333;
     font-weight: bold;
 }
+/* Logo */
+.logo a {
+    font-size: 2rem;
+    color: #333;
+    font-weight: bold;
+    text-decoration: none; /* Remove underline */
+}
+
+.logo a:hover {
+    color: #0073e6; /* Add a hover effect to the logo */
+}
 
 /* Nav Links and Social Icons Aligned on the Right */
 .nav-links {
@@ -661,4 +672,9 @@ nav {
     .social-icons {
         display: none;
     }
+    .nav-links
+    {
+        display: none;
+    }
+    
 }
