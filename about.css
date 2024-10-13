@@ -311,6 +311,8 @@ p {
 .skills {
     text-align: center; /* Centering the skills section */
     margin-top: 60px;
+    padding: 20px 0; /* Add some padding around the section */
+
 }
 
 .skills h2 {
@@ -412,38 +414,12 @@ p {
 }
 
 
-/* Specific colors for each skill icon */
-.html-icon {
-    color: #E44D26; /* HTML - Orange */
-}
-
-.css-icon {
-    color: #1572B6; /* CSS - Blue */
-}
-
-.js-icon {
-    color: #F7DF1E; /* JavaScript - Yellow */
-}
-
-.rust-icon {
-    color: #AA0000; /* Rust - Red */
-}
-
-.godot-icon {
-    color: #A3C4D7; /* Godot - Light Blue */
-}
-
-.salesforce-icon {
-    color: #00A1E0; /* Salesforce - Light Blue */
-}
-
-.github-icon {
-    color: #333; /* GitHub - Dark Gray */
-}
 /* Skills Section */
 .skills {
     text-align: center; /* Centering the skills section */
     margin-top: 60px;
+    padding: 20px 0; /* Add some padding around the section */
+
 }
 
 .skills h2 {
@@ -462,6 +438,7 @@ p {
 /* Skill Card Styling */
 .skill-card {
     background-color: white;
+    font-size: 48px; /* Adjust this size as needed */
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Default shadow */
@@ -493,15 +470,67 @@ p {
 }
 
 .godot-card {
-    box-shadow: 0 4px 10px rgba(163, 196, 215, 0.5); /* Godot - Light Blue shadow */
+    box-shadow: 0 4px 10px rgb(66, 158, 210); /* Godot - Light Blue shadow */
 }
 
-.salesforce-card {
-    box-shadow: 0 4px 10px rgba(0, 161, 224, 0.5); /* Salesforce - Light Blue shadow */
-}
 
 .github-card {
-    box-shadow: 0 4px 10px rgba(51, 51, 51, 0.5); /* GitHub - Dark Gray shadow */
+    box-shadow: 0 4px 10px rgba(51, 51, 51, 0.832); /* GitHub - Dark Gray shadow */
+}
+.ts-card {
+    box-shadow: 0 4px 10px rgba(0, 122, 204, 0.5); /* TypeScript - Blue shadow */
+}
+
+.c-card {
+    box-shadow: 0 4px 10px rgba(0, 122, 204, 0.5); /* C - Blue shadow */
+}
+
+.csharp-card {
+    box-shadow: 0 4px 10px rgba(0, 118, 214, 0.5); /* C# - Blue shadow */
+}
+
+.cpp-card {
+    box-shadow: 0 4px 10px rgba(255, 85, 0, 0.5); /* C++ - Orange shadow */
+}
+
+.python-card {
+    box-shadow: 0 4px 10px rgba(198, 100, 8, 0.5); /* Python - Orange shadow */
+}
+
+.java-card {
+    box-shadow: 0 4px 10px rgba(209, 101, 7, 0.5); /* Java - Orange shadow */
+}
+
+.react-card {
+    box-shadow: 0 4px 10px rgba(97, 218, 251, 0.5); /* React - Light Blue shadow */
+}
+
+.unreal-card {
+    box-shadow: 0 4px 10px rgba(58, 73, 102, 0.816); /* Unreal Engine - Dark Gray shadow */
+}
+
+.unity-card {
+    box-shadow: 0 4px 10px rgba(40, 40, 40, 0.728); /* Unity - Dark Gray shadow */
+}
+
+.lua-card {
+    box-shadow: 0 4px 10px rgba(0, 122, 204, 0.5); /* Lua - Blue shadow */
+}
+
+.haxe-card {
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5); /* Haxe - Red shadow */
+}
+
+.jira-card {
+    box-shadow: 0 4px 10px rgba(31, 121, 205, 0.753); /* Jira - Blue shadow */
+}
+
+.git-card {
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5); /* Git - Red shadow */
+}
+
+.nodejs-card {
+    box-shadow: 0 4px 10px rgba(156, 220, 59, 0.5); /* Node.js - Green shadow */
 }
 
 @media (min-width: 769px) {
@@ -678,3 +707,6 @@ nav {
     }
     
 }
+
+
+
