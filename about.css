@@ -100,12 +100,7 @@ nav {
     color: #0073e6;
 }
 
-/* Hide social media icons on mobile */
-@media (max-width: 768px) {
-    .social-icons {
-        display: none; /* Hide social icons on mobile */
-    }
-}
+
 
 /* Hamburger Menu */
 .menu-toggle {
@@ -252,20 +247,8 @@ nav {
 h1 {
     font-size: 2.5rem;
     color: #333;
-    line-height: 1.5;
+    line-height: 1.0;
     text-align: center; /* Center the title */
-}
-
-#changing-text {
-    color: #0073e6;
-    font-weight: bold;
-}
-
-.cursor {
-    font-weight: bold;
-    font-size: 2.5rem;
-    color: #0073e6;
-    animation: blink 0.7s step-end infinite;
 }
 
 @keyframes blink {
@@ -296,16 +279,6 @@ p {
     margin-top: 20px; /* Space above the button */
 }
 
-.about-btn:hover {
-    background-color: #005bb5;
-    transform: translateY(2px);
-    box-shadow: 0 3px 8px rgba(0, 115, 230, 0.2);
-}
-
-.about-btn:active {
-    transform: translateY(5px);
-    box-shadow: 0 2px 5px rgba(0, 115, 230, 0.1);
-}
 
 /* Skills Section */
 .skills {
@@ -347,17 +320,22 @@ p {
 /* Responsive Layout */
 @media (max-width: 768px) {
     .content-wrapper {
-        flex-direction: column-reverse; /* Reverse the order of content */
+        flex-direction: column; /* Reverse the order of content */
         text-align: center;
     }
-
     .profile-image {
-        margin-bottom: 20px; /* Add space below the image */
-        width: 300px; /* Adjust width */
+        display: block;
+        margin: 0 auto; /* Center the profile image */
+        margin-top: 70px; /* Increase space below the navbar */
+        margin-bottom: 10px; /* Reduce space below the image */
+        width: 100%; /* Adjust width to be more responsive */
+        max-width: 300px; /* Set a maximum width */
+        order: 1; /* Ensure the profile image is on top */
     }
 
     .text-section {
         padding-right: 0; /* Remove right padding */
+        order: 2;
     }
 
     .menu-toggle {
@@ -377,19 +355,32 @@ p {
 
 /* Half-Desktop Screen Adjustments */
 @media (min-width: 768px) and (max-width: 1024px) {
-    .content-wrapper {
-        flex-direction: column; /* Stack elements vertically */
-        text-align: center; /* Center align text */
+    @media (min-width: 768px) and (max-width: 1024px) {
+        .content-wrapper {
+            flex-direction: row; /* Ensure content appears side by side */
+            justify-content: space-between;
+            align-items: center; /* Align both sections in the center vertically */
+        }
+    
+        .text-section {
+            flex: 1;
+            padding-right: 50px;
+            padding-left: 20px;
+            text-align: left; /* Align text to the left */
+        }
+    
+        .image-section {
+            flex: 1;
+            text-align: right;
+        }
+    
+        .profile-image {
+            width: 100%; /* Adjust width for half-desktop */
+            max-width: 350px;
+            margin-bottom: 0;
+        }
     }
-
-    .image-section {
-        order: -1; /* Move image section to the top */
-    }
-
-    .profile-image {
-        width: 350px; /* Adjust width if needed */
-        margin-bottom: 20px; /* Add space below the image */
-    }
+    
 
     .NAME {
         font-size: 2.5rem; /* Adjust name size */
@@ -707,6 +698,7 @@ nav {
     }
     
 }
+
 
 
 
