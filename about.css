@@ -497,8 +497,7 @@ p {
 
 
 }
-
-.skills h2 {
+.skills .name-letter {
     font-size: 2em;
     color: #0073e6; /* Added color to the skills heading */
     margin-bottom: 20px;
