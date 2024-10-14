@@ -701,7 +701,7 @@ p {
     }
     .skills
     {
-        padding: 10px 70px; /* Reduce padding on the top/bottom and left/right */
+        padding: 10px 0px; /* Reduce padding on the top/bottom and left/right */
 
     }
 }
