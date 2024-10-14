@@ -4,14 +4,11 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     line-height: 1.6;
 }
-
-
 /* NAVBAR */
 nav {
     width: 100%;
@@ -25,18 +22,33 @@ nav {
     top: 0;
     z-index: 1000;
 }
-
 .logo {
     font-size: 2rem;
     color: #333;
     font-weight: bold;
 }
-
 /* Nav Links */
 .nav-links {
     list-style: none;
     display: flex;
     margin-left: auto; /* Push social icons to the right */
+}
+/* Logo */
+.logo a {
+    font-size: 2rem;
+    color: #333;
+    font-weight: bold;
+    text-decoration: none; /* Remove underline */
+    opacity: 0; /* Start hidden */
+    animation: fadeIn 1.5s ease forwards; /* Apply fade-in animation */
+}
+
+/* Nav Links Animation */
+.nav-links li {
+    opacity: 0; /* Start hidden */
+    margin-top: 20px; /* Start slightly lower */
+    animation: fadeIn 1.5s ease forwards; /* Apply fade-in animation */
+    animation-delay: 0.3s; /* Delay for staggered effect */
 }
 
 .nav-links li {
@@ -54,13 +66,9 @@ nav {
     display: flex; /* Make the anchor a flex container */
     align-items: center; /* Center the text vertically */
     padding: 0 15px; /* Adjusted padding for uniform spacing */}
-
-
 .nav-links li a:hover {
-    color: #0073e6;
-    
+    color: #0073e6;   
 }
-
 .nav-links li a.active::after {
     content: '';
     display: block;
@@ -76,28 +84,50 @@ nav {
     font-weight: bold; /* Make the active link bold */
     color: #000000; /* Optionally, add a different color for the active link */
 }
-
 .nav-links li a.active:hover {
     color: #005bb5; /* Optionally, change the hover color for the active link */
 }
-
-
 /* Social Media Icons in the nav bar */
 .social-icons {
     display: flex;
     align-items: center; /* Center vertically */
     margin-left: 20px; /* Space between nav links and social icons */
 }
+/* Social Media Icons Animation */
+.social-icons a {
+    opacity: 0; /* Start hidden */
+    margin-top: 20px; /* Start slightly lower */
+    animation: fadeIn 1.5s ease forwards; /* Apply fade-in animation */
+    animation-delay: 0.7s; /* Delay for staggered effect */
+    animation-fill-mode: forwards; /* Ensure final state is maintained */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Start lower */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* End at original position */
+    }
+}
+.social-icons a {
+    color: #333;
+    font-size: 1.8rem;
+    transition: color 0.3s;
+    margin-left: 15px; /* Space between icons */
+
+}
 .social-icons i {
     font-size: 30px; /* Change this value to adjust the icon size */
     color: #333; /* Optional: Change color if needed */
     transition: transform 0.3s, filter 0.3s; /* Smooth hover effect */
 }
-
 .social-icons i:hover {
     transform: scale(1.1); /* Enlarge on hover */
     filter: brightness(0) saturate(1000%) invert(37%) sepia(100%) saturate(2116%) hue-rotate(203deg) brightness(97%) contrast(100%); /* Blue color */
-
 }
 /* Overlay Social Media Icons Styling */
 .overlay-social-icons {
@@ -111,21 +141,10 @@ nav {
     color: #ffffff; /* Default color for icons */
     transition: transform 0.3s, color 0.3s; /* Smooth hover effect */
 }
-
 .overlay-social-icons a:hover {
     transform: scale(1.1); /* Enlarge on hover */
     color: #ffd700;
 }
-
-
-
-
-
-/* Social Media Icons Styling */
-.social-icons a {
-    margin-left: 15px; /* Space between icons */
-}
-
 
 /* Logo */
 .logo a {
@@ -134,20 +153,16 @@ nav {
     font-weight: bold;
     text-decoration: none; /* Remove underline */
 }
-
 .logo a:hover {
     color: #0073e6; /* Add a hover effect to the logo */
 }
-
-
 /* Mobile Nav Bar (Hamburger) */
 .menu-toggle {
     display: none;
     flex-direction: column;
     cursor: pointer;
 }
-
-.bar {
+.menu-toggle .bar {
     width: 25px;
     height: 3px;
     background-color: #333;
@@ -169,41 +184,32 @@ nav {
     transform: translateX(100%); /* Start off-screen */
     transition: transform 0.5s ease; /* Smooth transition for sliding effect */
 }
-
 /* When the overlay is active */
 #overlay-menu.active {
     transform: translateX(0); /* Slide in to view */
 }
-
-
-
 .overlay-content {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     padding-top: 40px; /* Bring content closer to the top */
 }
-
 .overlay-nav-links {
     list-style-type: none;
     padding: 0;
 }
-
 .overlay-nav-links li {
     margin: 15px 0;
 }
-
 .overlay-nav-links li a {
     font-size: 1.8rem; /* Adjust font size for readability */
     color: white;
     text-decoration: none;
     transition: color 0.3s;
 }
-
 .overlay-nav-links li a:hover {
     color: #ffd700; /* Gold color on hover */
 }
-
 /* Close Button */
 .close-btn {
     position: absolute;
@@ -214,18 +220,15 @@ nav {
     font-size: 2rem;
     cursor: pointer;
 }
-.close-btn :hover
-{
+.close-btn :hover {
     color: #ffd700;
 }
-
 .close-btn span {
     font-size: 2rem;
     color: white;
     cursor: pointer;
     text-decoration: none;
 }
-
 /* Underline Effect */
 .underline {
     width: calc(100% + 800%); /* Keep the same for mobile */
@@ -234,7 +237,6 @@ nav {
     margin-top: 5px; /* Space between the text and underline */
     margin-left: -800%; /* Negative margin for mobile */
 }
-
 /* Media Queries for Responsiveness */
 @media (max-width: 500px) {
     .underline {
@@ -242,42 +244,36 @@ nav {
         margin-left: -700%; /* Negative margin for mobile */
     }
 }
-
 @media (min-width: 500px) and (max-width: 550px) {
     .underline {
         width: calc(100% + 900%); /* Keep the same for mobile */
         margin-left: -900%; /* Negative margin for mobile */
     }
 }
-
 @media (min-width: 550px) and (max-width: 600px) {
     .underline {
         width: calc(100% + 1000%); /* Keep the same for mobile */
         margin-left: -1000%; /* Negative margin for mobile */
     }
 }
-
 @media (min-width: 600px) and (max-width: 650px) {
     .underline {
         width: calc(100% + 1100%); /* Keep the same for mobile */
         margin-left: -1100%; /* Negative margin for mobile */
     }
 }
-
 @media (min-width: 650px) and (max-width: 700px) {
     .underline {
         width: calc(100% + 1200%); /* Keep the same for mobile */
         margin-left: -1200%; /* Negative margin for mobile */
     }
 }
-
 @media (min-width: 700px) and (max-width: 768px) {
     .underline {
         width: calc(100% + 1400%); /* Keep the same for mobile */
         margin-left: -1400%; /* Negative margin for mobile */
     }
 }
-
 /* Header */
 header {
     text-align: center;
@@ -285,7 +281,6 @@ header {
     background-color: #f0f0f0; /* White background */
     color: #333;
 }
-
 /* Header Text Animation */
 header h1 {
     font-size: 3rem;
@@ -294,18 +289,15 @@ header h1 {
     opacity: 0; /* Start hidden */
     animation: fadeInUp 1s ease forwards; /* Apply the fade-in animation */
 }
-
 header p, .view-all-projects {
     opacity: 0; /* Start hidden */
     animation: fadeInUp 1s ease forwards;
     animation-delay: 0.5s; /* Delay the animation for the paragraph and button */
 }
-
 header p {
     font-size: 1.2rem;
     color: #555;
 }
-
 /* Jiggle Animation */
 .name-letter {
     display: inline-block;
@@ -313,11 +305,9 @@ header p {
     font-size: 3.0rem; /* Increased font size for the letters */
     color: #0073e6;
 }
-
 .name-letter:hover {
     animation: jiggle 0.5s ease-in-out;
 }
-
 @keyframes jiggle {
     0%, 100% {
         transform: rotate(0deg);
@@ -332,16 +322,13 @@ header p {
         transform: rotate(-20deg);
     }
 }
-
 /* New Styles Below (for 9 projects layout) */
 /* View All Projects Button */
 .view-all-projects {
     text-align: center;
     margin: 10px auto; /* Adjusted margin for more spacing */
     margin-bottom: 10px; /* Reduce space below the button */
-
 }
-
 .view-projects-btn {
     background-color: #0073e6;
     color: white;
@@ -351,22 +338,16 @@ header p {
     text-decoration: none;
     transition: all 0.3s ease;
     box-shadow: 0 8px 15px rgba(0, 115, 230, 0.3); /* Enhanced shadow */
-
 }
-
 .view-projects-btn:hover {
     background-color: #005bb5;
-    box-shadow: 0 12px 22px rgba(0, 115, 230, 0.4); /* Bigger shadow on hover */
-    
-    
+    box-shadow: 0 12px 22px rgba(0, 115, 230, 0.4); /* Bigger shadow on hover */   
 }
-
 .view-projects-btn:active {
     background-color: #003d7a;
     transform: translateY(0); /* Return to original position when clicked */
     box-shadow: 0 6px 12px rgba(0, 115, 230, 0.2); /* Pressed down shadow */
 }
-
 /* Portfolio Section */
 .portfolio-section {
     display: grid;
@@ -377,7 +358,6 @@ header p {
     margin: 0 auto; /* Center the section */
     padding-top: 0px;
 }
-
 /* Project Card */
 /* Project Card Animation */
 .project-card {
@@ -399,49 +379,34 @@ header p {
     transform: translateY(-30px); /* Slight lift on hover */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
 }
-
-
 .project-card:nth-child(2) {
     animation-delay: 0.1s; /* Slightly delay for the second card */
 }
-
 .project-card:nth-child(3) {
     animation-delay: 0.1s;
 }
-
 /* Continue for all cards */
 .project-card:nth-child(4) {
     animation-delay: 0.7s;
 }
-
 .project-card:nth-child(5) {
     animation-delay: .9s;
 }
-
 .project-card:nth-child(6) {
     animation-delay: 1.1s;
 }
-
 .project-card:nth-child(7) {
     animation-delay: 1.3s;
 }
-
 .project-card:nth-child(8) {
     animation-delay: 1.5s;
 }
-
 .project-card:nth-child(9) {
     animation-delay: 1.7s;
 }
-
-
-
-
-
 .project-card:hover {
     transform: scale(1.03); /* Slightly zoom in on hover */
 }
-
 /* Image Styles */
 .project-card img {
     width: calc(100%); /* Take full width minus padding */
@@ -454,23 +419,19 @@ header p {
 .project-card img:hover {
     transform: scale(1.05); /* Slight zoom on hover */
 }   
-
 .project-info {
     padding: 10px; /* Padding in project info */
     text-align: left;
 }
-
 .project-info h2 {
     font-size: 1.6rem; /* Heading size */
     margin-bottom: 10px; /* Space below heading */
 }
-
 .project-info p {
     font-size: 1.2rem; /* Description size */
     color: #555;
     margin-bottom: 15px; /* Space below description */
 }
-
 /* Project Link Button */
 .project-link {
     text-decoration: none;
@@ -480,12 +441,9 @@ header p {
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
-
 .project-link:hover {
     background-color: #005bb5;
 }
-
-
 /* Fade-in and slide-up animation for text and cards */
 @keyframes fadeInUp {
     0% {
@@ -497,30 +455,17 @@ header p {
         transform: translateY(0); /* End at the original position */
     }
 }
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
 .project-info p .tech-used {
     color: #0073e6; /* Blue color for the technologies used */
 }
-
-
 .project-info h2 a {
     margin-left: 10px; /* Space between the text and the icon */
     color: #7c7caf; /* Purple link */
     text-decoration: none; /* Remove underline */
 }
-
 .project-info h2 a:hover {
     color: #0380fd; /* Darker blue on hover */
 }
-
 /* Ensure the image and text are separate, and the image scales properly */
 .project-card {
     background-color: white;
@@ -532,18 +477,15 @@ header p {
     display: flex;
     flex-direction: column;
 }
-
 /* Ensure the text below the image is visible and not covered */
 .project-info {
     padding: 20px; /* Padding for the text area */
     text-align: left;
 }
-
 .project-info h2 {
     font-size: 1.6rem;
     margin-bottom: 10px; /* Space below the heading */
 }
-
 .project-info p {
     font-size: 1.2rem;
     color: #555;
@@ -579,8 +521,7 @@ header p {
     }
     .project-info h2 {
         font-size: 1.2rem; /* Heading size */
-    }
-    
+    }   
     .project-info p {
         font-size: 1.0rem; /* Description size */
     }
@@ -590,7 +531,6 @@ header p {
         padding: 30px; /* Padding around the content */
         padding-bottom: 0px;
     }
-    
 }
 @media (min-width: 769px) and (max-width: 1024px) {
     .portfolio-section {
@@ -608,5 +548,4 @@ header p {
     margin: 0 auto; /* Center the section */
     padding-top: 0px;
     }
-    
 }

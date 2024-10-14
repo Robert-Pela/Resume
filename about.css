@@ -4,7 +4,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
@@ -38,8 +37,23 @@ nav {
     color: #333;
     font-weight: bold;
     text-decoration: none; /* Remove underline */
+    opacity: 0; /* Start hidden */
+    animation: fadeIn 1.5s ease forwards; /* Apply fade-in animation */
 }
 
+/* Nav Links Animation */
+.nav-links li {
+    opacity: 0; /* Start hidden */
+    margin-top: 20px; /* Start slightly lower */
+    animation: fadeIn 1.5s ease forwards; /* Apply fade-in animation */
+    animation-delay: 0.3s; /* Delay for staggered effect */
+}
+
+/* Hover Effect for Nav Links */
+.nav-links li a:hover {
+    color: #0073e6; /* Change color on hover */
+    margin-top: -5px; /* Slight lift on hover */
+}
 .logo a:hover {
     color: #0073e6; /* Add a hover effect to the logo */
 }
@@ -49,6 +63,7 @@ nav {
     align-items: center; /* Center vertically */
     margin-left: 20px; /* Space between nav links and social icons */
 }
+
 
 .nav-links li a {
     color: #333;
@@ -84,13 +99,40 @@ nav {
     bottom: -5px; /* Slightly below the text */
     left: 0;
 }
-
-/* Social Media Icons */
+/* Social Media Icons Animation */
 .social-icons a {
+    opacity: 0; /* Start hidden */
+    margin-top: 20px; /* Start slightly lower */
+    animation: fadeIn 1.5s ease forwards; /* Apply fade-in animation */
+    animation-delay: 0.7s; /* Delay for staggered effect */
+    animation-fill-mode: forwards; /* Ensure final state is maintained */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Start lower */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* End at original position */
+    }
+}
+
+/* Hover Effect for Social Icons */
+.social-icons a:hover {
+    color: #0073e6; /* Change color on hover */
+    margin-top: -5px; /* Slight lift on hover */
+}
+
+.social-icons a {
+    color: #333;
+    font-size: 1.8rem;
+    transition: color 0.3s;
     margin-left: 15px; /* Space between icons */
 
 }
-
 .social-icons a:hover {
     color: #0073e6;
 }
@@ -275,11 +317,110 @@ nav {
     flex: 1;
     text-align: center;
 }
-
+/* Profile Image Animation */
 .profile-image {
     width: 400px;
     border-radius: 50%;
+    opacity: 0; /* Start hidden */
+    margin-top: 30px; /* Start slightly lower */
+    animation: fadeInImage 1.5s ease forwards; /* Apply fade-in animation */
+    transition: margin-top 0.3s ease; /* Smooth transition for hover */
 }
+
+/* Hover Effect for Profile Image */
+.profile-image:hover {
+    margin-top: 20px; /* Moves the image up by 10px on hover */
+}
+
+/* Heading Animation (About Me Text) */
+.NAME {
+    opacity: 0; /* Start hidden */
+    margin-top: 30px; /* Start slightly lower */
+    animation: fadeInText 1.5s ease forwards; /* Apply fade-in animation */
+    transition: margin-top 0.3s ease; /* Smooth transition for hover */
+}
+
+/* Hover Effect for Heading */
+.NAME:hover {
+    margin-top: 20px; /* Moves the heading up by 10px on hover */
+}
+
+/* Paragraph Animation */
+p {
+    opacity: 0; /* Start hidden */
+    margin-top: 30px; /* Start slightly lower */
+    animation: fadeInText 1.5s ease forwards; /* Apply fade-in animation */
+    animation-delay: 0.5s; /* Delay for effect */
+    transition: margin-top 0.3s ease; /* Smooth transition for hover */
+}
+
+/* Hover Effect for Paragraph */
+p:hover {
+    margin-top: 20px; /* Moves the paragraph up by 10px on hover */
+}
+
+/* Button Animation */
+.about-btn {
+    opacity: 0; /* Start hidden */
+    margin-top: 30px; /* Start slightly lower */
+    animation: fadeInButton 1.5s ease forwards; /* Apply fade-in animation */
+    animation-delay: 0.7s; /* Delay for effect */
+    transition: margin-top 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+/* Hover Effect for Button */
+.about-btn:hover {
+    margin-top: 20px; /* Moves the button up by 10px on hover */
+    box-shadow: 0 8px 15px rgba(0, 115, 230, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Skills Section Animation */
+.skills {
+    opacity: 0; /* Start hidden */
+    margin-top: 30px; /* Start slightly lower */
+    animation: fadeInText 1.5s ease forwards;
+    animation-delay: 0.9s;
+    transition: margin-top 0.3s ease; /* Smooth transition */
+}
+
+/* Hover Effect for Skills */
+.skills:hover {
+    margin-top: 20px; /* Moves the skills section up by 10px */
+}
+
+/* Fade-in animations for various elements */
+@keyframes fadeInImage {
+    0% {
+        opacity: 0;
+        margin-top: 30px;
+    }
+    100% {
+        opacity: 1;
+        margin-top: 0;
+    }
+}
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        margin-top: 30px;
+    }
+    100% {
+        opacity: 1;
+        margin-top: 0;
+    }
+}
+
+@keyframes fadeInButton {
+    0% {
+        opacity: 0;
+        margin-top: 30px;
+    }
+    100% {
+        opacity: 1;
+        margin-top: 0;
+    }
+}
+
 
 /* Heading and Animated Text */
 .NAME {
@@ -362,40 +503,27 @@ p {
     color: #0073e6; /* Added color to the skills heading */
     margin-bottom: 20px;
 }
-
-/* Skills Section */
-.skills {
-    text-align: center; /* Centering the skills section */
-    margin-top: 60px;
-    padding: 20px 0; /* Add some padding around the section */
-
-}
-
-.skills h2 {
-    font-size: 2em;
-    color: #0073e6; /* Added color to the skills heading */
-    margin-bottom: 20px;
-}
-
-
-
 /* Skill Card Styling */
 .skill-card {
-    width: 100px; /* Adjust width for half-desktop */
+    width: 100px; /* Adjust width */
     height: 100px; /* Keep square shape */
     background-color: white;
-    font-size: 60px; /* Adjust this size as needed */
+    font-size: 60px; /* Icon size */
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Default shadow */
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: box-shadow 0.3s ease; /* Smooth shadow transition */
+    opacity: 0; /* Start hidden */
+    margin-top: 0; /* Initial position */
+    animation: fadeIn 1.5s ease forwards; /* Fade-in animation */
+    transition: margin-top 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
 }
 
+/* Hover Effect (using margin) */
 .skill-card:hover {
-    transform: translateY(-5px); /* Slight lift on hover */
+    margin-top: -10px; /* Moves the card up by 10px */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
 
 /* Specific card shadows */
@@ -621,6 +749,6 @@ p {
         justify-content: center; /* Center the icon horizontally */
         align-items: center; /* Center the icon vertically */
         margin: auto; /* Center the card in its grid cell */
-    }
-   
+    }  
 }
+
