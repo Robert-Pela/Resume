@@ -258,7 +258,7 @@ nav {
 @media (max-width: 500px) {
     .underline {
         width: calc(100% + 700%); /* Keep the same for mobile */
-        margin-left: -700%; /* Negative margin for mobile */
+        margin-left: -675%; /* Negative margin for mobile */
     }
 }
 

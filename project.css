@@ -241,7 +241,7 @@ nav {
 @media (max-width: 500px) {
     .underline {
         width: calc(100% + 700%); /* Keep the same for mobile */
-        margin-left: -700%; /* Negative margin for mobile */
+        margin-left: -675%; /* Negative margin for mobile */
     }
 }
 @media (min-width: 500px) and (max-width: 550px) {
@@ -493,6 +493,11 @@ header p {
 }
 /* Hide social icons on mobile */
 @media (max-width: 768px) {
+    .name-letter
+    {
+        font-size: 2.4rem;
+    }
+  
     .social-icons {
         display: none; /* Hide social links on mobile */
     }
