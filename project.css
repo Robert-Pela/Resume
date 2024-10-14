@@ -11,6 +11,7 @@ body {
     line-height: 1.6;
 }
 
+
 /* NAVBAR */
 nav {
     width: 100%;
@@ -104,18 +105,10 @@ nav {
     justify-content: center; /* Center icons horizontally in the overlay */
     margin-top: 20px; /* Space above the icons */
 }
-
-/* Overlay Social Media Icons Styling */
-.overlay-social-icons {
-    display: flex;
-    justify-content: center; /* Center icons horizontally in the overlay */
-    margin-top: 20px; /* Space above the icons */
-}
-
 .overlay-social-icons a {
     margin: 0 10px; /* Space between icons */
     font-size: 40px; /* Adjust icon size */
-    color: #333; /* Default color for icons */
+    color: #ffffff; /* Default color for icons */
     transition: transform 0.3s, color 0.3s; /* Smooth hover effect */
 }
 
@@ -127,29 +120,10 @@ nav {
 
 
 
-/* Hide social icons on mobile */
-@media (max-width: 768px) {
-    .social-icons {
-        display: none; /* Hide social links on mobile */
-    }
-    .nav-links {
-        display: none; /* Hide nav links on mobile */
-    }
-}
 
 /* Social Media Icons Styling */
 .social-icons a {
     margin-left: 15px; /* Space between icons */
-}
-
-.social-icons img {
-    width: 30px; /* Adjust icon size */
-    height: 30px; /* Adjust icon size */
-    transition: transform 0.3s; /* Smooth hover effect */
-}
-
-.social-icons img:hover {
-    transform: scale(1.1); /* Enlarge on hover */
 }
 
 
@@ -180,18 +154,25 @@ nav {
     margin: 4px 0;
     transition: 0.3s;
 }
-/* Overlay Menu */
+/* Overlay Menu Styling */
 #overlay-menu {
-    display: none; /* Hidden by default */
+    display: block; /* Ensure it is block for the transition */
     position: fixed;
     top: 0;
-    right: 0; /* Positioned on the right side */
-    width: 280px; /* Fixed width */
+    right: 0; /* Start on the right */
+    width: 280px;
     height: 100%;
-    background-color: #7c7caf; /* Purple background */
-    z-index: 9999; /* Higher z-index to appear above other content */
+    background-color: #7c7caf;
+    z-index: 9999;
     text-align: center;
-    padding-top: 50px; /* Padding for content */
+    padding-top: 50px;
+    transform: translateX(100%); /* Start off-screen */
+    transition: transform 0.5s ease; /* Smooth transition for sliding effect */
+}
+
+/* When the overlay is active */
+#overlay-menu.active {
+    transform: translateX(0); /* Slide in to view */
 }
 
 
@@ -226,10 +207,16 @@ nav {
 /* Close Button */
 .close-btn {
     position: absolute;
-    top: 0;
+    top: 0px;
     right: 20px;
     padding: 10px 0; /* Vertical padding */
-    text-align: center;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+}
+.close-btn :hover
+{
+    color: #ffd700;
 }
 
 .close-btn span {
@@ -291,30 +278,6 @@ nav {
     }
 }
 
-/* Responsive styling */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-    }
-
-    .menu-toggle {
-        display: flex;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    /* For mobile, the overlay takes full width */
-    #overlay-menu {
-        left: 50%;
-        width: 50%;
-    }
-}
-
 /* Header */
 header {
     text-align: center;
@@ -348,8 +311,7 @@ header p {
     display: inline-block;
     transition: transform 0.2s;
     font-size: 3.0rem; /* Increased font size for the letters */
-    
-    color: #7c7caf;
+    color: #0073e6;
 }
 
 .name-letter:hover {
@@ -376,10 +338,12 @@ header p {
 .view-all-projects {
     text-align: center;
     margin: 10px auto; /* Adjusted margin for more spacing */
+    margin-bottom: 10px; /* Reduce space below the button */
+
 }
 
 .view-projects-btn {
-    background-color: #7c7caf;
+    background-color: #0073e6;
     color: white;
     padding: 15px 30px;
     font-size: 1.2rem;
@@ -387,6 +351,7 @@ header p {
     text-decoration: none;
     transition: all 0.3s ease;
     box-shadow: 0 8px 15px rgba(0, 115, 230, 0.3); /* Enhanced shadow */
+
 }
 
 .view-projects-btn:hover {
@@ -401,15 +366,6 @@ header p {
     transform: translateY(0); /* Return to original position when clicked */
     box-shadow: 0 6px 12px rgba(0, 115, 230, 0.2); /* Pressed down shadow */
 }
-/* Portfolio Section */
-.portfolio-section {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Default: 3 cards per row on desktop */
-    gap: 20px; /* Space between cards */
-    padding: 40px; /* Padding around the section */
-    max-width: 100%; /* Ensure it uses full width */
-    margin: 0 auto; /* Center the section */
-}
 
 /* Portfolio Section */
 .portfolio-section {
@@ -419,16 +375,7 @@ header p {
     padding: 40px; /* Padding around the section */
     max-width: 100%; /* Ensure it uses full width */
     margin: 0 auto; /* Center the section */
-}
-
-/* Portfolio Section */
-.portfolio-section {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Default: 3 cards per row on desktop */
-    gap: 20px; /* Space between cards */
-    padding: 40px; /* Padding around the section */
-    max-width: 100%; /* Ensure it uses full width */
-    margin: 0 auto; /* Center the section */
+    padding-top: 0px;
 }
 
 /* Project Card */
@@ -440,7 +387,12 @@ header p {
     overflow: hidden;
     animation-delay: 0.1s; /* Delay to create staggered effect */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
-
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Increased shadow for depth */
+    height: 500px; /* Allow card to grow with content */
+    padding: 30px; /* Padding around the content */
+    padding-bottom: 0px;
 }
 .project-card:hover {
     background-color: #f0f0f0; /* Change to a slightly darker color on hover */
@@ -482,15 +434,9 @@ header p {
     animation-delay: 1.7s;
 }
 
-.project-card {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Increased shadow for depth */
-    overflow: hidden;
-    transition: transform 0.3s ease;
-    height: auto; /* Allow card to grow with content */
-    padding: 40px; /* Padding around the content */
-}
+
+
+
 
 .project-card:hover {
     transform: scale(1.03); /* Slightly zoom in on hover */
@@ -498,8 +444,8 @@ header p {
 
 /* Image Styles */
 .project-card img {
-    width: calc(100% - 20px); /* Take full width minus padding */
-    height: 450px; /* Adjusted height for desktop */
+    width: calc(100%); /* Take full width minus padding */
+    height: 300px; /* Adjusted height for desktop */
     border-radius: 5px; /* Slight rounding of the image edges */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for image */
     object-fit: cover; /* Cover the image while maintaining aspect ratio */
@@ -508,21 +454,6 @@ header p {
 .project-card img:hover {
     transform: scale(1.05); /* Slight zoom on hover */
 }   
-
-
-/* Desktop Half screen */
-@media (max-width: 1200px) {
-    .project-card img {
-        height: 500px; /* Adjusted height for tablet view */
-    }
-}
-/* Mobile Mode */
-@media (max-width: 768px) {
-    .project-card img {
-        height: 300px; /* Adjusted height for mobile view */
-    }
-}
-
 
 .project-info {
     padding: 10px; /* Padding in project info */
@@ -554,18 +485,7 @@ header p {
     background-color: #005bb5;
 }
 
-/* Responsive Layout */
-@media (max-width: 768px) {
-    .portfolio-section {
-        grid-template-columns: 1fr; /* 1 project per row on mobile */
-    }
-}
 
-@media (min-width: 769px) and (max-width: 1024px) {
-    .portfolio-section {
-        grid-template-columns: 1fr; /* 1 project per row for small desktops/tablets */
-    }
-}
 /* Fade-in and slide-up animation for text and cards */
 @keyframes fadeInUp {
     0% {
@@ -601,3 +521,92 @@ header p {
     color: #0380fd; /* Darker blue on hover */
 }
 
+/* Ensure the image and text are separate, and the image scales properly */
+.project-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Increased shadow for depth */
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    margin-bottom: 20px; /* Space between the cards */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ensure the text below the image is visible and not covered */
+.project-info {
+    padding: 20px; /* Padding for the text area */
+    text-align: left;
+}
+
+.project-info h2 {
+    font-size: 1.6rem;
+    margin-bottom: 10px; /* Space below the heading */
+}
+
+.project-info p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 15px; /* Space below the description */
+}
+/* Hide social icons on mobile */
+@media (max-width: 768px) {
+    .social-icons {
+        display: none; /* Hide social links on mobile */
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+    .project-card img {
+        height: 200px; /* Adjust the height for smaller screens */
+    }
+    .portfolio-section {
+        grid-template-columns: 1fr; /* 1 project per row on mobile */
+    }
+    .menu-toggle {
+        display: flex;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    /* For mobile, the overlay takes full width */
+    #overlay-menu {
+        left: 50%;
+        width: 50%;
+    }
+    .project-info h2 {
+        font-size: 1.2rem; /* Heading size */
+    }
+    
+    .project-info p {
+        font-size: 1.0rem; /* Description size */
+    }
+    .project-card {
+        border-radius: 10px;
+        height: 400px; /* Allow card to grow with content */
+        padding: 30px; /* Padding around the content */
+        padding-bottom: 0px;
+    }
+    
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+    .portfolio-section {
+        grid-template-columns: 1fr; /* 1 project per row for small desktops/tablets */
+    }
+    .project-card img {
+        height: 300px; /* Adjust the height for tablet screens */
+    }
+    /* Portfolio Section */
+    .portfolio-section {
+    display: grid;
+    gap: 20px; /* Space between cards */
+    padding: 40px; /* Padding around the section */
+    max-width: 70%; /* Ensure it uses full width */
+    margin: 0 auto; /* Center the section */
+    padding-top: 0px;
+    }
+    
+}

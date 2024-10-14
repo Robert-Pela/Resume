@@ -9,6 +9,8 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     line-height: 1.6;
+    padding-top: 100px;
+
 }
 
 /* NAVBAR */
@@ -117,24 +119,34 @@ nav {
     transition: 0.3s;
 }
 
-/* Overlay Menu */
+/* Overlay Menu Styling */
 #overlay-menu {
-    display: none;
+    display: block; /* Ensure it is block for the transition */
     position: fixed;
     top: 0;
-    right: 0;
+    right: 0; /* Start on the right */
     width: 280px;
     height: 100%;
     background-color: #7c7caf;
     z-index: 9999;
     text-align: center;
     padding-top: 50px;
+    transform: translateX(100%); /* Start off-screen */
+    transition: transform 0.5s ease; /* Smooth transition for sliding effect */
 }
+
+/* When the overlay is active */
+#overlay-menu.active {
+    transform: translateX(0); /* Slide in to view */
+}
+
 
 .overlay-content {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    padding-top: 40px; /* Bring content closer to the top */
+
 }
 
 .overlay-nav-links {
@@ -161,14 +173,14 @@ nav {
 .overlay-social-icons {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-top: 30px;
+    margin-top: 20px; /* Space above the icons */
 }
 
 .overlay-social-icons a {
-    color: white;
-    font-size: 2rem;
-    transition: color 0.3s;
+    margin: 0 10px; /* Space between icons */
+    font-size: 40px; /* Adjust icon size */
+    color: #ffffff; /* Default color for icons */
+    transition: transform 0.3s, color 0.3s; /* Smooth hover effect */
 }
 
 .overlay-social-icons a:hover {
@@ -185,7 +197,68 @@ nav {
     font-size: 2rem;
     cursor: pointer;
 }
+.close-btn :hover
+{
+    color: #ffd700;
+}
+.close-btn span {
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
 
+/* Underline Effect */
+.underline {
+    width: calc(100% + 800%); /* Keep the same for mobile */
+    height: 4px; /* Height of the underline */
+    background-color: white; /* Color of the underline */
+    margin-top: 5px; /* Space between the text and underline */
+    margin-left: -800%; /* Negative margin for mobile */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 500px) {
+    .underline {
+        width: calc(100% + 700%); /* Keep the same for mobile */
+        margin-left: -700%; /* Negative margin for mobile */
+    }
+}
+
+@media (min-width: 500px) and (max-width: 550px) {
+    .underline {
+        width: calc(100% + 900%); /* Keep the same for mobile */
+        margin-left: -900%; /* Negative margin for mobile */
+    }
+}
+
+@media (min-width: 550px) and (max-width: 600px) {
+    .underline {
+        width: calc(100% + 1000%); /* Keep the same for mobile */
+        margin-left: -1000%; /* Negative margin for mobile */
+    }
+}
+
+@media (min-width: 600px) and (max-width: 650px) {
+    .underline {
+        width: calc(100% + 1100%); /* Keep the same for mobile */
+        margin-left: -1100%; /* Negative margin for mobile */
+    }
+}
+
+@media (min-width: 650px) and (max-width: 700px) {
+    .underline {
+        width: calc(100% + 1200%); /* Keep the same for mobile */
+        margin-left: -1200%; /* Negative margin for mobile */
+    }
+}
+
+@media (min-width: 700px) and (max-width: 768px) {
+    .underline {
+        width: calc(100% + 1400%); /* Keep the same for mobile */
+        margin-left: -1400%; /* Negative margin for mobile */
+    }
+}
 /* Main Section */
 .content-wrapper {
     display: flex;
@@ -313,6 +386,10 @@ p {
 
 /* Half-Desktop Screen Adjustments */
 @media (min-width: 768px) and (max-width: 1024px) {
+    body
+    {
+        padding-top: 50px;
+    }
     .content-wrapper {
         flex-direction: column; /* Stack elements vertically */
         text-align: center; /* Center align text */
@@ -324,7 +401,7 @@ p {
 
     .profile-image {
         width: 350px; /* Adjust width if needed */
-        margin-bottom: 20px; /* Add space below the image */
+        margin-bottom: 0px; /* Add space below the image */
     }
 
     .NAME {
@@ -445,8 +522,9 @@ nav {
 
 /* Responsive: Adjust mobile layout */
 @media (max-width: 768px) {
-    nav {
-        padding: 10px 20px; /* Reduce navbar padding for mobile */
+    body
+    {
+        padding-top: 50px;
     }
     .content-wrapper {
         flex-direction: column; /* Stack elements vertically */
