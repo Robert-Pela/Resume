@@ -653,11 +653,11 @@ p {
         text-align: center;
     }
     .skill-card {
-        width: 70px; /* Set a consistent width */
-        height: 70px; /* Set height equal to width for a square shape */
+        width: 60px; /* Set a consistent width */
+        height: 60px; /* Set height equal to width for a square shape */
         padding: 10px; /* Padding around the content */
         display: flex;
-        font-size: 50px; /* Adjust this size as needed */
+        font-size: 40px; /* Adjust this size as needed */
         justify-content: center; /* Center the icon horizontally */
         align-items: center; /* Center the icon vertically */
         margin: auto; /* Center the card in its grid cell */
@@ -696,7 +696,7 @@ p {
     .skills-grid {
         grid-template-columns: repeat(4, 1fr); /* 4 icons on half-desktop */
         gap: 10px; /* Reduced gap between cards */
-        max-width: 450px; /* Limit the maximum width */
+        max-width: 400px; /* Limit the maximum width */
         justify-items: center; /* Center items in the grid */
     }
     .skills
