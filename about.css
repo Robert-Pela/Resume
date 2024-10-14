@@ -1,753 +1,747 @@
-/* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+#overlay-menu
+{
+	background-color: #7c7caf;
+	display: block;
+	height: 100%;
+	padding-top: 50px;
+	position: fixed;
+	right: 0;
+	text-align: center;
+	top: 0;
+	transform: translateX(100%);
+	transition: transform 0.5s ease;
+	width: 280px;
+	z-index: 9999;
 }
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    line-height: 1.6;
-    padding-top: 100px;
-
+#overlay-menu.active
+{
+	transform: translateX(0);
 }
-
-/* NAVBAR */
-nav {
-    width: 100%;
-    display: flex;
-    justify-content: space-between; /* Space between logo and right-side links */
-    align-items: center;
-    padding: 20px 30px;
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    z-index: 1000;
+*
+{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
-
-.logo {
-    font-size: 2rem;
-    color: #333;
-    font-weight: bold;
+.about-btn
+{
+	animation: fadeInButton 1.5s ease forwards;
+	animation-delay: 0.7s;
+	margin-top: 30px;
+	opacity: 0;
+	transition: margin-top 0.3s ease, box-shadow 0.3s ease;
 }
-/* Logo */
-.logo a {
-    font-size: 2rem;
-    color: #333;
-    font-weight: bold;
-    text-decoration: none; /* Remove underline */
-    opacity: 0; /* Start hidden */
-    animation: fadeIn 1.5s ease forwards; /* Apply fade-in animation */
+.about-btn
+{
+	background-color: #0073e6;
+	border: none;
+	border-radius: 30px;
+	box-shadow: 0 5px 10px rgba(0, 115, 230, 0.2);
+	color: white;
+	display: inline-block;
+	font-size: 1.2rem;
+	margin-top: 20px;
+	padding: 12px 25px;
+	text-decoration: none;
+	transition: all 0.2s ease;
 }
-
-/* Nav Links Animation */
-.nav-links li {
-    opacity: 0; /* Start hidden */
-    margin-top: 20px; /* Start slightly lower */
-    animation: fadeIn 1.5s ease forwards; /* Apply fade-in animation */
-    animation-delay: 0.3s; /* Delay for staggered effect */
+.about-btn:hover
+{
+	box-shadow: 0 8px 15px rgba(0, 115, 230, 0.3);
+	margin-top: 20px;
 }
-
-/* Hover Effect for Nav Links */
-.nav-links li a:hover {
-    color: #0073e6; /* Change color on hover */
-    margin-top: -5px; /* Slight lift on hover */
+.c-card
+{
+	box-shadow: 0 4px 10px rgba(0, 122, 204, 0.5);
 }
-.logo a:hover {
-    color: #0073e6; /* Add a hover effect to the logo */
-}
-
-.social-icons {
-    display: flex;
-    align-items: center; /* Center vertically */
-    margin-left: 20px; /* Space between nav links and social icons */
-}
-
-
-.nav-links li a {
-    color: #333;
-    text-decoration: none;
-    font-size: 1.4rem;
-    position: relative;
-    transition: all 0.3s ease;
-    height: 50px; /* Set a consistent height */
-    display: flex; /* Make the anchor a flex container */
-    align-items: center; /* Center the text vertically */
-    padding: 0 15px; /* Optional: add padding for horizontal spacing */
-}
-.nav-links li a:hover {
-    color: #0073e6;
-}
-
-/* Active link styling */
-.nav-links li a.active {
-    font-weight: bold;
-    color: #000;
-}
-.nav-links li a.active:hover {
-    color: #005bb5; /* Optionally, change the hover color for the active link */
-}
-
-.nav-links li a.active::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 4px;
-    background-color: #0073e6; /* Blue underline */
-    position: absolute;
-    bottom: -5px; /* Slightly below the text */
-    left: 0;
-}
-/* Social Media Icons Animation */
-.social-icons a {
-    opacity: 0; /* Start hidden */
-    margin-top: 20px; /* Start slightly lower */
-    animation: fadeIn 1.5s ease forwards; /* Apply fade-in animation */
-    animation-delay: 0.7s; /* Delay for staggered effect */
-    animation-fill-mode: forwards; /* Ensure final state is maintained */
-}
-
-/* Fade-in animation */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px); /* Start lower */
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0); /* End at original position */
-    }
-}
-
-/* Hover Effect for Social Icons */
-.social-icons a:hover {
-    color: #0073e6; /* Change color on hover */
-    margin-top: -5px; /* Slight lift on hover */
-}
-
-.social-icons a {
-    color: #333;
-    font-size: 1.8rem;
-    transition: color 0.3s;
-    margin-left: 15px; /* Space between icons */
-
-}
-.social-icons a:hover {
-    color: #0073e6;
-}
-
-
-
-/* Hamburger Menu */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.menu-toggle .bar {
-    width: 25px;
-    height: 3px;
-    background-color: #333;
-    margin: 4px 0;
-    transition: 0.3s;
-}
-
-/* Overlay Menu Styling */
-#overlay-menu {
-    display: block; /* Ensure it is block for the transition */
-    position: fixed;
-    top: 0;
-    right: 0; /* Start on the right */
-    width: 280px;
-    height: 100%;
-    background-color: #7c7caf;
-    z-index: 9999;
-    text-align: center;
-    padding-top: 50px;
-    transform: translateX(100%); /* Start off-screen */
-    transition: transform 0.5s ease; /* Smooth transition for sliding effect */
-}
-
-/* When the overlay is active */
-#overlay-menu.active {
-    transform: translateX(0); /* Slide in to view */
-}
-
-
-
-.overlay-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding-top: 40px; /* Bring content closer to the top */
-
-}
-
-.overlay-nav-links {
-    list-style-type: none;
-    padding: 0;
-}
-
-.overlay-nav-links li {
-    margin: 15px 0;
-}
-
-.overlay-nav-links li a {
-    font-size: 1.8rem;
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.overlay-nav-links li a:hover {
-    color: #ffd700;
-}
-
-/* Overlay Social Icons */
-.overlay-social-icons {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px; /* Space above the icons */
-}
-
-.overlay-social-icons a {
-    margin: 0 10px; /* Space between icons */
-    font-size: 40px; /* Adjust icon size */
-    color: #ffffff; /* Default color for icons */
-    transition: transform 0.3s, color 0.3s; /* Smooth hover effect */
-}
-
-.overlay-social-icons a:hover {
-    transform: scale(1.1);
-    color: #ffd700;
-}
-
-/* Close Button for Overlay */
-.close-btn {
-    position: absolute;
-    top: 0px;
-    right: 20px;
-    padding: 10px 0; /* Vertical padding */
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
+.close-btn
+{
+	color: white;
+	cursor: pointer;
+	font-size: 2rem;
+	padding: 10px 0;
+	position: absolute;
+	right: 20px;
+	top: 0px;
 }
 .close-btn :hover
 {
-    color: #ffd700;
-}
-.close-btn span {
-    font-size: 2rem;
-    color: white;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-/* Underline Effect */
-.underline {
-    width: calc(100% + 800%); /* Keep the same for mobile */
-    height: 4px; /* Height of the underline */
-    background-color: white; /* Color of the underline */
-    margin-top: 5px; /* Space between the text and underline */
-    margin-left: -800%; /* Negative margin for mobile */
-}
-
-/* Media Queries for Responsiveness */
-@media (max-width: 500px) {
-    .underline {
-        width: calc(100% + 700%); /* Keep the same for mobile */
-        margin-left: -675%; /* Negative margin for mobile */
-    }
-}
-
-@media (min-width: 500px) and (max-width: 550px) {
-    .underline {
-        width: calc(100% + 900%); /* Keep the same for mobile */
-        margin-left: -900%; /* Negative margin for mobile */
-    }
-}
-
-@media (min-width: 550px) and (max-width: 600px) {
-    .underline {
-        width: calc(100% + 1000%); /* Keep the same for mobile */
-        margin-left: -1000%; /* Negative margin for mobile */
-    }
-}
-
-@media (min-width: 600px) and (max-width: 650px) {
-    .underline {
-        width: calc(100% + 1100%); /* Keep the same for mobile */
-        margin-left: -1100%; /* Negative margin for mobile */
-    }
-}
-
-@media (min-width: 650px) and (max-width: 700px) {
-    .underline {
-        width: calc(100% + 1200%); /* Keep the same for mobile */
-        margin-left: -1200%; /* Negative margin for mobile */
-    }
-}
-
-@media (min-width: 700px) and (max-width: 768px) {
-    .underline {
-        width: calc(100% + 1400%); /* Keep the same for mobile */
-        margin-left: -1400%; /* Negative margin for mobile */
-    }
-}
-/* Main Section */
-.content-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start; /* Align items at the start */
-    padding: 120px 50px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Reverse Order for Profile Image */
-.text-section {
-    flex: 1;
-    padding-right: 40px;
-    text-align: center; /* Center the text */
-}
-
-.image-section {
-    flex: 1;
-    text-align: center;
-}
-/* Profile Image Animation */
-.profile-image {
-    width: 400px;
-    border-radius: 50%;
-    opacity: 0; /* Start hidden */
-    margin-top: 30px; /* Start slightly lower */
-    animation: fadeInImage 1.5s ease forwards; /* Apply fade-in animation */
-    transition: margin-top 0.3s ease; /* Smooth transition for hover */
-}
-
-/* Hover Effect for Profile Image */
-.profile-image:hover {
-    margin-top: 20px; /* Moves the image up by 10px on hover */
-}
-
-/* Heading Animation (About Me Text) */
-.NAME {
-    opacity: 0; /* Start hidden */
-    margin-top: 30px; /* Start slightly lower */
-    animation: fadeInText 1.5s ease forwards; /* Apply fade-in animation */
-    transition: margin-top 0.3s ease; /* Smooth transition for hover */
-}
-
-/* Hover Effect for Heading */
-.NAME:hover {
-    margin-top: 20px; /* Moves the heading up by 10px on hover */
-}
-
-/* Paragraph Animation */
-p {
-    opacity: 0; /* Start hidden */
-    margin-top: 30px; /* Start slightly lower */
-    animation: fadeInText 1.5s ease forwards; /* Apply fade-in animation */
-    animation-delay: 0.5s; /* Delay for effect */
-    transition: margin-top 0.3s ease; /* Smooth transition for hover */
-}
-
-/* Hover Effect for Paragraph */
-p:hover {
-    margin-top: 20px; /* Moves the paragraph up by 10px on hover */
-}
-
-/* Button Animation */
-.about-btn {
-    opacity: 0; /* Start hidden */
-    margin-top: 30px; /* Start slightly lower */
-    animation: fadeInButton 1.5s ease forwards; /* Apply fade-in animation */
-    animation-delay: 0.7s; /* Delay for effect */
-    transition: margin-top 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
-}
-
-/* Hover Effect for Button */
-.about-btn:hover {
-    margin-top: 20px; /* Moves the button up by 10px on hover */
-    box-shadow: 0 8px 15px rgba(0, 115, 230, 0.3); /* Enhanced shadow on hover */
-}
-
-/* Skills Section Animation */
-.skills {
-    opacity: 0; /* Start hidden */
-    margin-top: 30px; /* Start slightly lower */
-    animation: fadeInText 1.5s ease forwards;
-    animation-delay: 0.9s;
-    transition: margin-top 0.3s ease; /* Smooth transition */
-}
-
-/* Hover Effect for Skills */
-.skills:hover {
-    margin-top: 20px; /* Moves the skills section up by 10px */
-}
-
-/* Fade-in animations for various elements */
-@keyframes fadeInImage {
-    0% {
-        opacity: 0;
-        margin-top: 30px;
-    }
-    100% {
-        opacity: 1;
-        margin-top: 0;
-    }
-}
-@keyframes fadeInText {
-    0% {
-        opacity: 0;
-        margin-top: 30px;
-    }
-    100% {
-        opacity: 1;
-        margin-top: 0;
-    }
-}
-
-@keyframes fadeInButton {
-    0% {
-        opacity: 0;
-        margin-top: 30px;
-    }
-    100% {
-        opacity: 1;
-        margin-top: 0;
-    }
-}
-
-
-/* Heading and Animated Text */
-.NAME {
-    font-size: 3.5rem;
-    color: #0073e6;
-    margin-bottom: 20px;
-}
-
-.name-letter {
-    display: inline-block;
-    transition: transform 0.2s;
-}
-
-.name-letter:hover {
-    animation: jiggle 0.3s ease-in-out;
-}
-
-@keyframes jiggle {
-    0%, 100% {
-        transform: rotate(0deg);
-    }
-    25% {
-        transform: rotate(-10deg);
-    }
-    50% {
-        transform: rotate(10deg);
-    }
-    75% {
-        transform: rotate(-10deg);
-    }
-}
-
-h1 {
-    font-size: 2.5rem;
-    color: #333;
-    line-height: 1.0;
-    text-align: center; /* Center the title */
-}
-
-@keyframes blink {
-    50% {
-        opacity: 0;
-    }
-}
-
-p {
-    margin: 30px 0;
-    font-size: 1.4rem;
-    color: #555;
-    text-align: center; /* Center the paragraph */
-}
-
-/* Button Styling */
-.about-btn {
-    display: inline-block;
-    padding: 12px 25px;
-    background-color: #0073e6;
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-    border-radius: 30px;
-    border: none;
-    transition: all 0.2s ease;
-    box-shadow: 0 5px 10px rgba(0, 115, 230, 0.2);
-    margin-top: 20px; /* Space above the button */
-}
-
-
-/* Skills Section */
-.skills {
-    text-align: center; /* Centering the skills section */
-    margin-top: 60px;
-    padding: 20px 0; /* Add some padding around the section */
-
-
-}
-.skills .name-letter {
-    font-size: 3em;
-    color: #0073e6; /* Added color to the skills heading */
-    margin-bottom: 20px;
-}
-/* Skill Card Styling */
-.skill-card {
-    width: 100px; /* Adjust width */
-    height: 100px; /* Keep square shape */
-    background-color: white;
-    font-size: 60px; /* Icon size */
-    border-radius: 10px;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0; /* Start hidden */
-    margin-top: 0; /* Initial position */
-    animation: fadeIn 1.5s ease forwards; /* Fade-in animation */
-    transition: margin-top 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
-}
-
-/* Hover Effect (using margin) */
-.skill-card:hover {
-    margin-top: -10px; /* Moves the card up by 10px */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-}
-
-/* Specific card shadows */
-.html-card {
-    box-shadow: 0 4px 10px rgba(228, 77, 38, 0.5); /* HTML - Orange shadow */
-}
-
-.css-card {
-    box-shadow: 0 4px 10px rgba(21, 114, 182, 0.5); /* CSS - Blue shadow */
-}
-
-.js-card {
-    box-shadow: 0 4px 10px rgba(247, 223, 30, 0.5); /* JavaScript - Yellow shadow */
-}
-
-.rust-card {
-    box-shadow: 0 4px 10px rgba(170, 0, 0, 0.5); /* Rust - Red shadow */
-}
-
-.godot-card {
-    box-shadow: 0 4px 10px rgb(66, 158, 210); /* Godot - Light Blue shadow */
-}
-
-
-.github-card {
-    box-shadow: 0 4px 10px rgba(51, 51, 51, 0.832); /* GitHub - Dark Gray shadow */
-}
-.ts-card {
-    box-shadow: 0 4px 10px rgba(0, 122, 204, 0.5); /* TypeScript - Blue shadow */
-}
-
-.c-card {
-    box-shadow: 0 4px 10px rgba(0, 122, 204, 0.5); /* C - Blue shadow */
-}
-
-.csharp-card {
-    box-shadow: 0 4px 10px rgba(0, 118, 214, 0.5); /* C# - Blue shadow */
-}
-
-.cpp-card {
-    box-shadow: 0 4px 10px rgba(255, 85, 0, 0.5); /* C++ - Orange shadow */
-}
-
-.python-card {
-    box-shadow: 0 4px 10px rgba(198, 100, 8, 0.5); /* Python - Orange shadow */
-}
-
-.java-card {
-    box-shadow: 0 4px 10px rgba(209, 101, 7, 0.5); /* Java - Orange shadow */
-}
-
-.react-card {
-    box-shadow: 0 4px 10px rgba(97, 218, 251, 0.5); /* React - Light Blue shadow */
-}
-
-.unreal-card {
-    box-shadow: 0 4px 10px rgba(58, 73, 102, 0.816); /* Unreal Engine - Dark Gray shadow */
-}
-
-.go-card {
-    box-shadow: 0 4px 10px rgba(10, 84, 154, 0.728); /* Go - Blue shadow */
-}
-
-.lua-card {
-    box-shadow: 0 4px 10px rgba(0, 122, 204, 0.5); /* Lua - Blue shadow */
-}
-
-.ruby-card {
-    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5); /* Ruby - Red shadow */
-}
-
-.jira-card {
-    box-shadow: 0 4px 10px rgba(31, 121, 205, 0.753); /* Jira - Blue shadow */
-}
-
-.git-card {
-    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5); /* Git - Red shadow */
-}
-
-.nodejs-card {
-    box-shadow: 0 4px 10px rgba(156, 220, 59, 0.5); /* Node.js - Green shadow */
-}
-
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 icons on desktop */
-    gap: 10px; /* Reduced gap between icons for desktop */
-    max-width: 600px; /* Limit the maximum width */
-    margin: 0 auto; /* Center the grid within the container */
-    gap: 20px;
-    justify-items: center; /* Center items in the grid */
-}
-
-.social-icons i {
-    font-size: 30px; /* Change this value to adjust the icon size */
-    color: #333; /* Optional: Change color if needed */
-    transition: transform 0.3s, filter 0.3s; /* Smooth hover effect */
-}
-
-.social-icons i:hover {
-    transform: scale(1.1); /* Enlarge on hover */
-    filter: brightness(0) saturate(1000%) invert(37%) sepia(100%) saturate(2116%) hue-rotate(203deg) brightness(97%) contrast(100%); /* Blue color */
-
-}
-.nav-links li {
-    display: flex;
-    align-items: center; /* Center the links vertically */
-}
-.nav-links {
-    list-style: none;
-    display: flex;
-    margin-left: auto; /* Push nav links and icons to the right */
-}
-
-@media (max-width: 768px) {
-    .NAME {
-        font-size: 2.5rem; /* Adjust name size */
-    }
-    .social-icons {
-        display: none;
-    }
-    .nav-links
-    {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-    }
-    .skill-card {
-        width: 60px; /* Set a consistent width */
-        height: 60px; /* Set height equal to width for a square shape */
-        padding: 10px; /* Padding around the content */
-        display: flex;
-        font-size: 40px; /* Adjust this size as needed */
-        justify-content: center; /* Center the icon horizontally */
-        align-items: center; /* Center the icon vertically */
-        margin: auto; /* Center the card in its grid cell */
-    }
-     /* For mobile, the overlay takes full width */
-     #overlay-menu {
-        left: 50%;
-        width: 50%;
-    }
-    .content-wrapper {
-        flex-direction: column; /* Reverse the order of content */
-        text-align: center;
-    }
-    body {
-        padding-top: 0px;
-    
-    }
-    .profile-image {
-        display: block;
-        margin: 0 auto; /* Center the profile image */
-        margin-top: 70px; /* Increase space below the navbar */
-        margin-bottom: 10px; /* Reduce space below the image */
-        width: 100%; /* Adjust width to be more responsive */
-        max-width: 300px; /* Set a maximum width */
-        order: 1; /* Ensure the profile image is on top */
-    }
-
-    .text-section {
-        padding-right: 0; /* Remove right padding */
-        order: 2;
-    }
-
-    .menu-toggle {
-        display: flex;
-    }
-    .skills-grid {
-        grid-template-columns: repeat(4, 1fr); /* 4 icons on half-desktop */
-        gap: 10px; /* Reduced gap between cards */
-        max-width: 300px; /* Limit the maximum width */
-        justify-items: start; /* Center items in the grid */
-    }
-    .skills
-    {
-        padding: 10px 0px; /* Reduce padding on the top/bottom and left/right */
-
-    }
-}
-/* Half-Desktop Screen Adjustments */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .NAME {
-        font-size: 2.5rem; /* Adjust name size */
-    }
-    
-    .content-wrapper {
-        flex-direction: row; /* Ensure content appears side by side */
-        justify-content: space-between;
-        align-items: center; /* Align both sections in the center vertically */
-    }
-
-    .text-section {
-        flex: 1;
-        padding-right: 50px;
-        padding-left: 20px;
-        text-align: left; /* Align text to the left */
-    }
-
-    .image-section {
-        flex: 1;
-        text-align: right;
-    }
-
-    .profile-image {
-        width: 100%; /* Adjust width for half-desktop */
-        max-width: 350px;
-        margin-bottom: 0;
-    }
-    .skills-grid {
-        grid-template-columns: repeat(4, 1fr); /* 4 icons on half-desktop */
-        gap: 20px; /* Reduced gap between cards */
-        max-width: 400px; /* Limit the maximum width */
-        justify-items: center; /* Center items in the grid */
-    }
-    .skill-card {
-        width: 80px; /* Adjust width for half-desktop */
-        height: 80px; /* Keep square shape */
-        padding: 10px; /* Padding around the content */
-        display: flex;
-        font-size: 50px; /* Adjust this size as needed */
-        justify-content: center; /* Center the icon horizontally */
-        align-items: center; /* Center the icon vertically */
-        margin: auto; /* Center the card in its grid cell */
-    }  
-}
-
+	color: #ffd700;
+}
+.close-btn span
+{
+	color: white;
+	cursor: pointer;
+	font-size: 2rem;
+	text-decoration: none;
+}
+.content-wrapper
+{
+	align-items: flex-start;
+	display: flex;
+	justify-content: space-between;
+	margin: 0 auto;
+	max-width: 1200px;
+	padding: 120px 50px;
+}
+.cpp-card
+{
+	box-shadow: 0 4px 10px rgba(255, 85, 0, 0.5);
+}
+.csharp-card
+{
+	box-shadow: 0 4px 10px rgba(0, 118, 214, 0.5);
+}
+.css-card
+{
+	box-shadow: 0 4px 10px rgba(21, 114, 182, 0.5);
+}
+.git-card
+{
+	box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5);
+}
+.github-card
+{
+	box-shadow: 0 4px 10px rgba(51, 51, 51, 0.832);
+}
+.go-card
+{
+	box-shadow: 0 4px 10px rgba(10, 84, 154, 0.728);
+}
+.godot-card
+{
+	box-shadow: 0 4px 10px rgb(66, 158, 210);
+}
+.html-card
+{
+	box-shadow: 0 4px 10px rgba(228, 77, 38, 0.5);
+}
+.image-section
+{
+	flex: 1;
+	text-align: center;
+}
+.java-card
+{
+	box-shadow: 0 4px 10px rgba(209, 101, 7, 0.5);
+}
+.jira-card
+{
+	box-shadow: 0 4px 10px rgba(31, 121, 205, 0.753);
+}
+.js-card
+{
+	box-shadow: 0 4px 10px rgba(247, 223, 30, 0.5);
+}
+.logo
+{
+	color: #333;
+	font-size: 2rem;
+	font-weight: bold;
+}
+.logo a
+{
+	animation: fadeIn 1.5s ease forwards;
+	color: #333;
+	font-size: 2rem;
+	font-weight: bold;
+	opacity: 0;
+	text-decoration: none;
+}
+.logo a:hover
+{
+	color: #0073e6;
+}
+.lua-card
+{
+	box-shadow: 0 4px 10px rgba(0, 122, 204, 0.5);
+}
+.menu-toggle
+{
+	cursor: pointer;
+	display: none;
+	flex-direction: column;
+}
+.menu-toggle .bar
+{
+	background-color: #333;
+	height: 3px;
+	margin: 4px 0;
+	transition: 0.3s;
+	width: 25px;
+}
+.NAME
+{
+	animation: fadeInText 1.5s ease forwards;
+	margin-top: 30px;
+	opacity: 0;
+	transition: margin-top 0.3s ease;
+}
+.NAME
+{
+	color: #0073e6;
+	font-size: 3.5rem;
+	margin-bottom: 20px;
+}
+.NAME:hover
+{
+	margin-top: 20px;
+}
+.name-letter
+{
+	display: inline-block;
+	transition: transform 0.2s;
+}
+.name-letter:hover
+{
+	animation: jiggle 0.3s ease-in-out;
+}
+.nav-links
+{
+	display: flex;
+	list-style: none;
+	margin-left: auto;
+}
+.nav-links li
+{
+	animation: fadeIn 1.5s ease forwards;
+	animation-delay: 0.3s;
+	margin-top: 20px;
+	opacity: 0;
+}
+.nav-links li
+{
+	align-items: center;
+	display: flex;
+}
+.nav-links li a
+{
+	align-items: center;
+	color: #333;
+	display: flex;
+	font-size: 1.4rem;
+	height: 50px;
+	padding: 0 15px;
+	position: relative;
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+.nav-links li a.active
+{
+	color: #000;
+	font-weight: bold;
+}
+.nav-links li a.active::after
+{
+	background-color: #0073e6;
+	bottom: -5px;
+	content: '';
+	display: block;
+	height: 4px;
+	left: 0;
+	position: absolute;
+	width: 100%;
+}
+.nav-links li a.active:hover
+{
+	color: #005bb5;
+}
+.nav-links li a:hover
+{
+	color: #0073e6;
+	margin-top: -5px;
+}
+.nav-links li a:hover
+{
+	color: #0073e6;
+}
+.nodejs-card
+{
+	box-shadow: 0 4px 10px rgba(156, 220, 59, 0.5);
+}
+.overlay-content
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	padding-top: 40px;
+}
+.overlay-nav-links
+{
+	list-style-type: none;
+	padding: 0;
+}
+.overlay-nav-links li
+{
+	margin: 15px 0;
+}
+.overlay-nav-links li a
+{
+	color: white;
+	font-size: 1.8rem;
+	text-decoration: none;
+	transition: color 0.3s;
+}
+.overlay-nav-links li a:hover
+{
+	color: #ffd700;
+}
+.overlay-social-icons
+{
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+.overlay-social-icons a
+{
+	color: #ffffff;
+	font-size: 40px;
+	margin: 0 10px;
+	transition: transform 0.3s, color 0.3s;
+}
+.overlay-social-icons a:hover
+{
+	color: #ffd700;
+	transform: scale(1.1);
+}
+.profile-image
+{
+	animation: fadeInImage 1.5s ease forwards;
+	border-radius: 50%;
+	margin-top: 30px;
+	opacity: 0;
+	transition: margin-top 0.3s ease;
+	width: 400px;
+}
+.profile-image:hover
+{
+	margin-top: 20px;
+}
+.python-card
+{
+	box-shadow: 0 4px 10px rgba(198, 100, 8, 0.5);
+}
+.react-card
+{
+	box-shadow: 0 4px 10px rgba(97, 218, 251, 0.5);
+}
+.ruby-card
+{
+	box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5);
+}
+.rust-card
+{
+	box-shadow: 0 4px 10px rgba(170, 0, 0, 0.5);
+}
+.skill-card
+{
+	align-items: center;
+	animation: fadeIn 1.5s ease forwards;
+	background-color: white;
+	border-radius: 10px;
+	display: flex;
+	font-size: 60px;
+	height: 100px;
+	justify-content: center;
+	margin-top: 0;
+	opacity: 0;
+	padding: 20px;
+	transition: margin-top 0.3s ease, box-shadow 0.3s ease;
+	width: 100px;
+}
+.skill-card:hover
+{
+	box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+	margin-top: -10px;
+}
+.skills
+{
+	animation: fadeInText 1.5s ease forwards;
+	animation-delay: 0.9s;
+	margin-top: 30px;
+	opacity: 0;
+	transition: margin-top 0.3s ease;
+}
+.skills
+{
+	margin-top: 60px;
+	padding: 20px 0;
+	text-align: center;
+}
+.skills .name-letter
+{
+	color: #0073e6;
+	font-size: 3em;
+	margin-bottom: 20px;
+}
+.skills:hover
+{
+	margin-top: 20px;
+}
+.skills-grid
+{
+	display: grid;
+	gap: 10px;
+	gap: 20px;
+	grid-template-columns: repeat(5, 1fr);
+	justify-items: center;
+	margin: 0 auto;
+	max-width: 600px;
+}
+.social-icons
+{
+	align-items: center;
+	display: flex;
+	margin-left: 20px;
+}
+.social-icons a
+{
+	animation: fadeIn 1.5s ease forwards;
+	animation-delay: 0.7s;
+	animation-fill-mode: forwards;
+	margin-top: 20px;
+	opacity: 0;
+}
+.social-icons a
+{
+	color: #333;
+	font-size: 1.8rem;
+	margin-left: 15px;
+	transition: color 0.3s;
+}
+.social-icons a:hover
+{
+	color: #0073e6;
+	margin-top: -5px;
+}
+.social-icons a:hover
+{
+	color: #0073e6;
+}
+.social-icons i
+{
+	color: #333;
+	font-size: 30px;
+	transition: transform 0.3s, filter 0.3s;
+}
+.social-icons i:hover
+{
+	filter: brightness(0) saturate(1000%) invert(37%) sepia(100%) saturate(2116%) hue-rotate(203deg) brightness(97%) contrast(100%);
+	transform: scale(1.1);
+}
+.text-section
+{
+	flex: 1;
+	padding-right: 40px;
+	text-align: center;
+}
+.ts-card
+{
+	box-shadow: 0 4px 10px rgba(0, 122, 204, 0.5);
+}
+.underline
+{
+	background-color: white;
+	height: 4px;
+	margin-left: -800%;
+	margin-top: 5px;
+	width: calc(100% + 800%);
+}
+.unreal-card
+{
+	box-shadow: 0 4px 10px rgba(58, 73, 102, 0.816);
+}
+@keyframes blink
+{
+	50%
+	{
+		opacity: 0;
+	}
+}
+@keyframes fadeIn
+{
+	0%
+	{
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	100%
+	{
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+@keyframes fadeInButton
+{
+	0%
+	{
+		margin-top: 30px;
+		opacity: 0;
+	}
+	100%
+	{
+		margin-top: 0;
+		opacity: 1;
+	}
+}
+@keyframes fadeInImage
+{
+	0%
+	{
+		margin-top: 30px;
+		opacity: 0;
+	}
+	100%
+	{
+		margin-top: 0;
+		opacity: 1;
+	}
+}
+@keyframes fadeInText
+{
+	0%
+	{
+		margin-top: 30px;
+		opacity: 0;
+	}
+	100%
+	{
+		margin-top: 0;
+		opacity: 1;
+	}
+}
+@keyframes jiggle
+{
+	0%, 100%
+	{
+		transform: rotate(0deg);
+	}
+	25%
+	{
+		transform: rotate(-10deg);
+	}
+	50%
+	{
+		transform: rotate(10deg);
+	}
+	75%
+	{
+		transform: rotate(-10deg);
+	}
+}
+@media (max-width: 500px)
+{
+	.underline
+	{
+		margin-left: -675%;
+		width: calc(100% + 700%);
+	}
+}
+@media (max-width: 768px)
+{
+	#overlay-menu
+	{
+		left: 50%;
+		width: 50%;
+	}
+	.content-wrapper
+	{
+		flex-direction: column;
+		text-align: center;
+	}
+	.menu-toggle
+	{
+		display: flex;
+	}
+	.NAME
+	{
+		font-size: 2.5rem;
+	}
+	.nav-links
+	{
+		display: none;
+		flex-direction: column;
+		text-align: center;
+		width: 100%;
+	}
+	.profile-image
+	{
+		display: block;
+		margin: 0 auto;
+		margin-bottom: 10px;
+		margin-top: 70px;
+		max-width: 300px;
+		order: 1;
+		width: 100%;
+	}
+	.skill-card
+	{
+		align-items: center;
+		display: flex;
+		font-size: 40px;
+		height: 60px;
+		justify-content: center;
+		margin: auto;
+		padding: 10px;
+		width: 60px;
+	}
+	.skills
+	{
+		padding: 10px 0px;
+	}
+	.skills-grid
+	{
+		gap: 10px;
+		grid-template-columns: repeat(4, 1fr);
+		justify-items: start;
+		max-width: 300px;
+	}
+	.social-icons
+	{
+		display: none;
+	}
+	.text-section
+	{
+		order: 2;
+		padding-right: 0;
+	}
+	body
+	{
+		padding-top: 0px;
+	}
+}
+@media (min-width: 500px) and (max-width: 550px)
+{
+	.underline
+	{
+		margin-left: -900%;
+		width: calc(100% + 900%);
+	}
+}
+@media (min-width: 550px) and (max-width: 600px)
+{
+	.underline
+	{
+		margin-left: -1000%;
+		width: calc(100% + 1000%);
+	}
+}
+@media (min-width: 600px) and (max-width: 650px)
+{
+	.underline
+	{
+		margin-left: -1100%;
+		width: calc(100% + 1100%);
+	}
+}
+@media (min-width: 650px) and (max-width: 700px)
+{
+	.underline
+	{
+		margin-left: -1200%;
+		width: calc(100% + 1200%);
+	}
+}
+@media (min-width: 700px) and (max-width: 768px)
+{
+	.underline
+	{
+		margin-left: -1400%;
+		width: calc(100% + 1400%);
+	}
+}
+@media (min-width: 768px) and (max-width: 1024px)
+{
+	.content-wrapper
+	{
+		align-items: center;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	.image-section
+	{
+		flex: 1;
+		text-align: right;
+	}
+	.NAME
+	{
+		font-size: 2.5rem;
+	}
+	.profile-image
+	{
+		margin-bottom: 0;
+		max-width: 350px;
+		width: 100%;
+	}
+	.skill-card
+	{
+		align-items: center;
+		display: flex;
+		font-size: 50px;
+		height: 80px;
+		justify-content: center;
+		margin: auto;
+		padding: 10px;
+		width: 80px;
+	}
+	.skills-grid
+	{
+		gap: 20px;
+		grid-template-columns: repeat(4, 1fr);
+		justify-items: center;
+		max-width: 400px;
+	}
+	.text-section
+	{
+		flex: 1;
+		padding-left: 20px;
+		padding-right: 50px;
+		text-align: left;
+	}
+}
+body
+{
+	background-color: #f0f0f0;
+	font-family: Arial, sans-serif;
+	line-height: 1.6;
+	padding-top: 100px;
+}
+h1
+{
+	color: #333;
+	font-size: 2.5rem;
+	line-height: 1.0;
+	text-align: center;
+}
+nav
+{
+	align-items: center;
+	background-color: #fff;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	display: flex;
+	justify-content: space-between;
+	padding: 20px 30px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
+}
+p
+{
+	animation: fadeInText 1.5s ease forwards;
+	animation-delay: 0.5s;
+	margin-top: 30px;
+	opacity: 0;
+	transition: margin-top 0.3s ease;
+}
+p
+{
+	color: #555;
+	font-size: 1.4rem;
+	margin: 30px 0;
+	text-align: center;
+}
+p:hover
+{
+	margin-top: 20px;
+}

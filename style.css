@@ -1,608 +1,671 @@
-/* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+#changing-text
+{
+	color: #0073e6;
+	font-weight: bold;
+	line-height: 0;
 }
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    line-height: 1.6;
-    padding-top: 100px;
-
+#overlay-menu
+{
+	background-color: #7c7caf;
+	display: block;
+	height: 100%;
+	padding-top: 50px;
+	position: fixed;
+	right: 0;
+	text-align: center;
+	top: 0;
+	transform: translateX(100%);
+	transition: transform 0.5s ease;
+	width: 280px;
+	z-index: 9999;
 }
-/* NAVBAR */
-nav {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 30px; /* Standardized padding for uniform height */
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    z-index: 1000;
+#overlay-menu.active
+{
+	transform: translateX(0);
 }
-.logo {
-    font-size: 2rem;
-    color: #333;
-    font-weight: bold;
+*
+{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
-/* Logo */
-
-.logo a:hover {
-    color: #0073e6; /* Add a hover effect to the logo */
+.about-btn
+{
+	animation: fadeIn 1.5s ease forwards;
+	animation-delay: 0.5s;
+	margin-top: 20px;
+	opacity: 0;
 }
-/* Logo Animation */
-.logo a {
-    font-size: 2rem;
-    color: #333;
-    font-weight: bold;
-    text-decoration: none; /* Remove underline */
-    opacity: 0; /* Start hidden */
-    animation: fadeIn 1.5s ease forwards; /* Apply fade-in animation */
+.about-btn
+{
+	background-color: #0073e6;
+	border: none;
+	border-radius: 30px;
+	box-shadow: 0 5px 10px rgba(0, 115, 230, 0.2);
+	color: white;
+	display: inline-block;
+	font-size: 1.2rem;
+	padding: 12px 25px;
+	text-decoration: none;
+	transition: all 0.2s ease;
 }
-
-/* Nav Links Animation */
-.nav-links li {
-    opacity: 0; /* Start hidden */
-    margin-top: 20px; /* Start slightly lower */
-    animation: fadeIn 1.5s ease forwards; /* Apply fade-in animation */
-    animation-delay: 0.3s; /* Delay for staggered effect */
+.about-btn:active
+{
+	box-shadow: 0 2px 5px rgba(0, 115, 230, 0.1);
+	transform: translateY(5px);
 }
-
-/* Hover Effect for Nav Links */
-.nav-links li a:hover {
-    color: #0073e6; /* Change color on hover */
-    margin-top: -5px; /* Slight lift on hover */
+.about-btn:hover
+{
+	background-color: #005bb5;
+	box-shadow: 0 3px 8px rgba(0, 115, 230, 0.2);
+	transform: translateY(2px);
 }
-
-/* Button Animation */
-.about-btn {
-    opacity: 0; /* Start hidden */
-    margin-top: 20px; /* Start slightly lower */
-    animation: fadeIn 1.5s ease forwards; /* Apply fade-in animation */
-    animation-delay: 0.5s; /* Delay for effect */
+.about-btn:hover
+{
+	background-color: #005bb5;
+	box-shadow: 0 8px 15px rgba(0, 115, 230, 0.2);
+	margin-top: -5px;
 }
-
-/* Hover Effect for Button */
-.about-btn:hover {
-    background-color: #005bb5; /* Change background color on hover */
-    margin-top: -5px; /* Slight lift on hover */
-    box-shadow: 0 8px 15px rgba(0, 115, 230, 0.2); /* Enhanced shadow */
-}
-
-/* Social Media Icons Animation */
-.social-icons a {
-    opacity: 0; /* Start hidden */
-    margin-top: 20px; /* Start slightly lower */
-    animation: fadeIn 1.5s ease forwards; /* Apply fade-in animation */
-    animation-delay: 0.7s; /* Delay for staggered effect */
-}
-
-/* Hover Effect for Social Icons */
-.social-icons a:hover {
-    color: #0073e6; /* Change color on hover */
-    margin-top: -5px; /* Slight lift on hover */
-}
-/* Nav Links and Social Icons Aligned on the Right */
-.nav-links {
-    list-style: none;
-    display: flex;
-    margin-left: auto; /* Push links and icons to the right */
-}
-.social-icons {
-    display: flex;
-    align-items: center; /* Center vertically */
-    margin-left: 20px; /* Add extra margin between nav-links and social icons */
-}
-.nav-links li a:hover {
-    color: #0073e6;
-}
-/* Active link styling */
-.nav-links li a.active {
-    font-weight: bold;
-    color: #000;
-}
-.nav-links li a.active:hover {
-    color: #005bb5; /* Optionally, change the hover color for the active link */
-}
-.nav-links li a.active::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 4px;
-    background-color: #0073e6; /* Blue underline */
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-}
-/* Social Media Icons */
-.social-icons a {
-    margin-left: 15px; /* Space between icons */
-    color: #333;
-    font-size: 1.8rem;
-    transition: color 0.3s;
-}
-/* Hamburger Menu */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-.menu-toggle .bar {
-    width: 25px;
-    height: 3px;
-    background-color: #333;
-    margin: 4px 0;
-    transition: 0.3s;
-}
-/* Overlay Menu Styling */
-#overlay-menu {
-    display: block; /* Ensure it is block for the transition */
-    position: fixed;
-    top: 0;
-    right: 0; /* Start on the right */
-    width: 280px;
-    height: 100%;
-    background-color: #7c7caf;
-    z-index: 9999;
-    text-align: center;
-    padding-top: 50px;
-    transform: translateX(100%); /* Start off-screen */
-    transition: transform 0.5s ease; /* Smooth transition for sliding effect */
-}
-/* When the overlay is active */
-#overlay-menu.active {
-    transform: translateX(0); /* Slide in to view */
-}
-.overlay-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding-top: 40px; /* Bring content closer to the top */
-
-}
-.overlay-nav-links {
-    list-style-type: none;
-    padding: 0;
-}
-.overlay-nav-links li {
-    margin: 15px 0;
-}
-.overlay-nav-links li a {
-    font-size: 1.8rem;
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-.overlay-nav-links li a:hover {
-    color: #ffd700;
-}
-/* Overlay Social Icons */
-.overlay-social-icons {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px; /* Space above the icons */
-}
-.overlay-social-icons a {
-    margin: 0 10px; /* Space between icons */
-    font-size: 40px; /* Adjust icon size */
-    color: #ffffff; /* Default color for icons */
-    transition: transform 0.3s, color 0.3s; /* Smooth hover effect */
-}
-.overlay-social-icons a:hover {
-    transform: scale(1.1);
-    color: #ffd700;
-}
-/* Close Button for Overlay */
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
+.close-btn
+{
+	color: white;
+	cursor: pointer;
+	font-size: 2rem;
+	position: absolute;
+	right: 20px;
+	top: 20px;
 }
 .close-btn :hover
 {
-    color: #ffd700;
+	color: #ffd700;
 }
-.close-btn span {
-    font-size: 2rem;
-    color: white;
-    cursor: pointer;
-    text-decoration: none;
+.close-btn span
+{
+	color: white;
+	cursor: pointer;
+	font-size: 2rem;
+	text-decoration: none;
 }
-/* Underline Effect */
-.underline {
-    width: calc(100% + 800%); /* Keep the same for mobile */
-    height: 4px; /* Height of the underline */
-    background-color: white; /* Color of the underline */
-    margin-top: 5px; /* Space between the text and underline */
-    margin-left: -800%; /* Negative margin for mobile */
+.content-wrapper
+{
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	margin: 0 auto;
+	max-width: 1200px;
+	padding: 120px 50px;
 }
-/* Media Queries for Responsiveness */
-@media (max-width: 500px) {
-    .underline {
-        width: calc(100% + 700%); /* Keep the same for mobile */
-        margin-left: -675%; /* Negative margin for mobile */
-    }
+.cursor
+{
+	animation: blink 0.7s step-end infinite;
+	color: #0073e6;
+	font-size: 2.5rem;
+	font-weight: bold;
 }
-@media (min-width: 500px) and (max-width: 550px) {
-    .underline {
-        width: calc(100% + 900%); /* Keep the same for mobile */
-        margin-left: -900%; /* Negative margin for mobile */
-    }
+.image-section
+{
+	flex: 1;
+	text-align: center;
 }
-@media (min-width: 550px) and (max-width: 600px) {
-    .underline {
-        width: calc(100% + 1000%); /* Keep the same for mobile */
-        margin-left: -1000%; /* Negative margin for mobile */
-    }
+.intro-text p
+{
+	font-size: 2rem;
 }
-@media (min-width: 600px) and (max-width: 650px) {
-    .underline {
-        width: calc(100% + 1100%); /* Keep the same for mobile */
-        margin-left: -1100%; /* Negative margin for mobile */
-    }
+.logo
+{
+	color: #333;
+	font-size: 2rem;
+	font-weight: bold;
 }
-@media (min-width: 650px) and (max-width: 700px) {
-    .underline {
-        width: calc(100% + 1200%); /* Keep the same for mobile */
-        margin-left: -1200%; /* Negative margin for mobile */
-    }
+.logo a
+{
+	animation: fadeIn 1.5s ease forwards;
+	color: #333;
+	font-size: 2rem;
+	font-weight: bold;
+	opacity: 0;
+	text-decoration: none;
 }
-@media (min-width: 700px) and (max-width: 768px) {
-    .underline {
-        width: calc(100% + 1400%); /* Keep the same for mobile */
-        margin-left: -1400%; /* Negative margin for mobile */
-    }
+.logo a:hover
+{
+	color: #0073e6;
 }
-/* Main Section */
-.content-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 120px 50px;
-    max-width: 1200px;
-    margin: 0 auto;
+.menu-toggle
+{
+	cursor: pointer;
+	display: none;
+	flex-direction: column;
 }
-.text-section {
-    flex: 1;
-    padding-right: 40px;
-
+.menu-toggle .bar
+{
+	background-color: #333;
+	height: 3px;
+	margin: 4px 0;
+	transition: 0.3s;
+	width: 25px;
 }
-.image-section {
-    flex: 1;
-    text-align: center;
+.NAME
+{
+	animation: fadeIn 1.5s ease forwards;
+	animation-delay: 0.4s;
+	color: #0073e6;
+	font-size: 3.5rem;
+	opacity: 0;
 }
-/* Profile Image Animation */
-.profile-image {
-    width: 400px;
-    border-radius: 50%;
-    opacity: 0; /* Start hidden */
-    animation: fadeIn 1.5s ease forwards; /* Apply fade-in animation */
-    animation-delay: 0.2s; /* Delay for effect */
+.name-letter
+{
+	display: inline-block;
+	transition: transform 0.2s ease;
 }
-
-/* Name Animation */
-.NAME {
-    font-size: 3.5rem;
-    color: #0073e6;
-    opacity: 0; /* Start hidden */
-    animation: fadeIn 1.5s ease forwards; /* Apply fade-in animation */
-    animation-delay: 0.4s; /* Delay for effect */
+.name-letter:hover
+{
+	animation: jiggle 0.3s ease-in-out;
 }
-
-/* Heading Animation */
-h1 {
-    font-size: 2.5rem;
-    color: #333;
-    line-height: 2.0;
-    opacity: 0; /* Start hidden */
-    animation: fadeIn 1.5s ease forwards; /* Apply fade-in animation */
-    animation-delay: 0.6s; /* Delay for effect */
+.nav-links
+{
+	display: flex;
+	list-style: none;
+	margin-left: auto;
 }
-
-/* Paragraph Animation */
-p {
-    margin: 30px 0;
-    font-size: 1.4rem;
-    color: #555;
-    opacity: 0; /* Start hidden */
-    animation: fadeIn 1.5s ease forwards; /* Apply fade-in animation */
-    animation-delay: 0.8s; /* Delay for effect */
+.nav-links
+{
+	display: flex;
+	list-style: none;
+	margin-left: auto;
 }
-
-/* Fade-in animation */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px); /* Start lower */
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0); /* End at original position */
-    }
+.nav-links li
+{
+	animation: fadeIn 1.5s ease forwards;
+	animation-delay: 0.3s;
+	margin-top: 20px;
+	opacity: 0;
 }
-
-.name-letter {
-    display: inline-block;
-    transition: transform 0.2s ease;
+.nav-links li
+{
+	align-items: center;
+	display: flex;
 }
-.name-letter:hover {
-    animation: jiggle 0.3s ease-in-out;
+.nav-links li a
+{
+	align-items: center;
+	color: #333;
+	display: flex;
+	font-size: 1.4rem;
+	height: 50px;
+	padding: 0 15px;
+	position: relative;
+	text-decoration: none;
+	transition: all 0.3s ease;
 }
-@keyframes jiggle {
-    0%, 100% {
-        transform: rotate(0deg);
-    }
-    25% {
-        transform: rotate(-10deg);
-    }
-    50% {
-        transform: rotate(10deg);
-    }
-    75% {
-        transform: rotate(-10deg);
-    }
+.nav-links li a.active
+{
+	color: #000;
+	font-weight: bold;
 }
-
-h1.NAME {
-    line-height: 1.0;
+.nav-links li a.active::after
+{
+	background-color: #0073e6;
+	bottom: -5px;
+	content: '';
+	display: block;
+	height: 4px;
+	left: 0;
+	position: absolute;
+	width: 100%;
 }
-h1.CHANGE {
-    line-height: 0.5;
-    padding-bottom: 10px;
+.nav-links li a.active:hover
+{
+	color: #005bb5;
 }
-#changing-text {
-    color: #0073e6;
-    font-weight: bold;
-    line-height: 0;
+.nav-links li a:hover
+{
+	color: #0073e6;
+	margin-top: -5px;
 }
-.cursor {
-    font-weight: bold;
-    font-size: 2.5rem;
-    color: #0073e6;
-    animation: blink 0.7s step-end infinite;
+.nav-links li a:hover
+{
+	color: #0073e6;
 }
-@keyframes blink {
-    50% {
-        opacity: 0;
-    }
+.overlay-content
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	padding-top: 40px;
 }
-
-/* Button Styling */
-.about-btn {
-    display: inline-block;
-    padding: 12px 25px;
-    background-color: #0073e6;
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-    border-radius: 30px;
-    border: none;
-    transition: all 0.2s ease;
-    box-shadow: 0 5px 10px rgba(0, 115, 230, 0.2);
+.overlay-nav-links
+{
+	list-style-type: none;
+	padding: 0;
 }
-.about-btn:hover {
-    background-color: #005bb5;
-    transform: translateY(2px);
-    box-shadow: 0 3px 8px rgba(0, 115, 230, 0.2);
+.overlay-nav-links li
+{
+	margin: 15px 0;
 }
-.about-btn:active {
-    transform: translateY(5px);
-    box-shadow: 0 2px 5px rgba(0, 115, 230, 0.1);
+.overlay-nav-links li a
+{
+	color: white;
+	font-size: 1.8rem;
+	text-decoration: none;
+	transition: color 0.3s;
 }
-
-.social-icons img {
-    width: 30px; /* Adjust icon size */
-    height: 30px; /* Adjust icon size */
-    transition: transform 0.3s; /* Smooth hover effect */
+.overlay-nav-links li a:hover
+{
+	color: #ffd700;
 }
-.social-icons img:hover {
-    transform: scale(1.1); /* Enlarge on hover */
+.overlay-social-icons
+{
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
 }
-.social-icons i {
-    font-size: 30px; /* Change this value to adjust the icon size */
-    color: #333; /* Optional: Change color if needed */
-    transition: transform 0.3s, filter 0.3s; /* Smooth hover effect */
+.overlay-social-icons a
+{
+	color: #ffffff;
+	font-size: 40px;
+	margin: 0 10px;
+	transition: transform 0.3s, color 0.3s;
 }
-.social-icons i:hover {
-    transform: scale(1.1); /* Enlarge on hover */
-    filter: brightness(0) saturate(1000%) invert(37%) sepia(100%) saturate(2116%) hue-rotate(203deg) brightness(97%) contrast(100%); /* Blue color */
+.overlay-social-icons a:hover
+{
+	color: #ffd700;
+	transform: scale(1.1);
 }
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    margin-left: auto; /* Push nav links and icons to the right */
+.profile-image
+{
+	animation: fadeIn 1.5s ease forwards;
+	animation-delay: 0.2s;
+	border-radius: 50%;
+	opacity: 0;
+	width: 400px;
 }
-.nav-links li {
-    display: flex;
-    align-items: center; /* Center the links vertically */
+.social-icons
+{
+	align-items: center;
+	display: flex;
+	margin-left: 20px;
 }
-.nav-links li a {
-    color: #333;
-    text-decoration: none;
-    font-size: 1.4rem;
-    position: relative;
-    transition: all 0.3s ease;
-    height: 50px; /* Consistent height */
-    display: flex;
-    align-items: center; /* Center text vertically */
-    padding: 0 15px;
+.social-icons a
+{
+	color: #333;
+	font-size: 1.8rem;
+	margin-left: 15px;
+	transition: color 0.3s;
 }
-.social-icons a {
-    color: #333;
-    font-size: 1.8rem;
-    transition: color 0.3s;
-    margin-left: 15px; /* Space between icons */
+.social-icons a
+{
+	color: #333;
+	font-size: 1.8rem;
+	margin-left: 15px;
+	transition: color 0.3s;
 }
-.social-icons a:hover {
-    color: #0073e6;
+.social-icons a
+{
+	animation: fadeIn 1.5s ease forwards;
+	animation-delay: 0.7s;
+	margin-top: 20px;
+	opacity: 0;
 }
-.social-icons i {
-    font-size: 30px; /* Adjust icon size */
-    color: #333;
-    transition: transform 0.3s, filter 0.3s;
+.social-icons a:hover
+{
+	color: #0073e6;
 }
-.social-icons i:hover {
-    transform: scale(1.1);
-    filter: brightness(0) saturate(1000%) invert(37%) sepia(100%) saturate(2116%) hue-rotate(203deg) brightness(97%) contrast(100%);
+.social-icons a:hover
+{
+	color: #0073e6;
+	margin-top: -5px;
 }
-/* Align the Hello World text and name closer */
-.text-section p {
-    text-align: right;
-    margin-bottom: 0px; /* Adjust the spacing between Hello World and the name */
+.social-icons i
+{
+	color: #333;
+	font-size: 30px;
+	transition: transform 0.3s, filter 0.3s;
 }
-.text-section h1.NAME {
-    margin-bottom: 20px; /* Adjust to bring it closer to the image */
-    display: inline-block;
-    text-align: right;
-    vertical-align: middle; /* Align with the image */
+.social-icons i
+{
+	color: #333;
+	font-size: 30px;
+	transition: transform 0.3s, filter 0.3s;
 }
-/* Align the name to the image */
-.text-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: right;
-    height: 100%;
-    padding-right: 40px; /* Keep the original padding for spacing */
+.social-icons i:hover
+{
+	filter: brightness(0) saturate(1000%) invert(37%) sepia(100%) saturate(2116%) hue-rotate(203deg) brightness(97%) contrast(100%);
+	transform: scale(1.1);
 }
-/* Align the button to the right */
-.text-section .about-btn {
-    align-self: flex-end; /* Align button to the right within the text-section */
-    margin-top: 20px; /* Add some space above the button */
+.social-icons i:hover
+{
+	filter: brightness(0) saturate(1000%) invert(37%) sepia(100%) saturate(2116%) hue-rotate(203deg) brightness(97%) contrast(100%);
+	transform: scale(1.1);
 }
-.intro-text p {
-    font-size: 2rem; /* Increase only the size of this text */
+.social-icons img
+{
+	height: 30px;
+	transition: transform 0.3s;
+	width: 30px;
 }
-/* Media Queries for Half Desktop and Mobile */
-@media (max-width: 1024px) {
-    .content-wrapper {
-        flex-direction: column; /* Ensure it's stacked on smaller screens */
-        align-items: center; /* Center horizontally */
-    }
-    .text-section {
-        text-align: center; /* Center text */
-    }
-    .intro-text p {
-        text-align: center; /* Center text */
-    }
-    .text-section p {
-        text-align: center;
-        margin-bottom: 0px; /* Adjust the spacing between Hello World and the name */
-    }
-    .text-section .about-btn {
-        align-self: center; /* Align button to the right within the text-section */
-        margin-top: 20px; /* Add some space above the button */
-    }
-    .text-section h1.NAME {
-        margin-bottom: 20px; /* Adjust to bring it closer to the image */
-        display: inline-block;
-        text-align: center;
-        vertical-align: middle; /* Align with the image */
-    }
+.social-icons img:hover
+{
+	transform: scale(1.1);
 }
-/* Responsive: Adjust mobile layout */
-@media (max-width: 768px) {
-    body {
-        padding-top: 50px;
-    }
-    .content-wrapper {
-        flex-direction: column; /* Stack elements vertically */
-        align-items: center; /* Center horizontally */
-        text-align: center; /* Center text */
-        padding: 20px; /* Reduce padding to save space */
-    }
-    .profile-image {
-        display: block;
-        margin: 0 auto; /* Center the profile image */
-        margin-top: 70px; /* Increase space below the navbar */
-        margin-bottom: 10px; /* Reduce space below the image */
-        width: 80%; /* Adjust width to be more responsive */
-        max-width: 300px; /* Set a maximum width */
-        order: 1; /* Ensure the profile image is on top */
-    }
-    .text-section p {
-        display: block;
-        margin: 0 auto;
-    }
-    .text-section {
-        padding: 0; /* Remove padding for mobile */
-        order: 2; /* Keep text section below profile image */
-        margin-top: 5px; /* Add margin to reduce space between name and job title */
-        text-align: center;
-    }
-    #changing-text {
-        font-size: 1.6rem; /* Adjust font size for changing text */
-        margin-bottom: 5px; /* Reduce space below changing text */
-    }
-    .text-section h1 { /* Adjust font size for job title */
-        font-size: 1.6rem; /* Smaller font size for job title */
-        margin-bottom: 10px; /* Reduce space below */
-    }
-    .text-section h1.NAME {
-        text-align: center; /* Center the name */
-        font-size: 2.4rem; /* Smaller font size for mobile */
-        margin-bottom: 0px; /* Reduce space below the name */
-    }
-    .intro-text p {
-        font-size: 1.2rem; /* Smaller intro text size for mobile */
-        margin: 0 0 10px; /* Adjust margin */
-    }
-    .about-btn {
-        padding: 10px 20px; /* Reduce button padding */
-        font-size: 1rem; /* Smaller button text size */
-        margin-top: 10px; /* Reduce margin above the button */
-    }
-    /* Ensure the button fits within the screen */
-    .text-section .about-btn {
-        align-self: center; /* Center the button */
-    }
-    .menu-toggle {
-        display: flex; /* Show hamburger menu */
-    }
-    /* For mobile, the overlay takes full width */
-    #overlay-menu {
-        left: 50%;
-        width: 50%;
-    }
-    .social-icons {
-        display: none; /* Hide social icons on mobile */
-    }
-    .nav-links {
-        display: none; /* Hide nav links on mobile */
-    }
+.text-section
+{
+	flex: 1;
+	padding-right: 40px;
 }
-/* Half-Desktop Screen Adjustments */
-@media (min-width: 768px) and (max-width: 1024px) {
-    body {
-        padding-top: 50px;
-    }
-    .content-wrapper {
-        flex-direction: column; /* Stack elements vertically */
-        text-align: center; /* Center align text */
-    }
-    .image-section {
-        order: -1; /* Move image section to the top */
-    }
-    .profile-image {
-        width: 350px; /* Adjust width if needed */
-        margin-bottom: 0px; /* Add space below the image */
-    }
-    .NAME {
-        font-size: 2.5rem; /* Adjust name size */
-        text-align: center;
-        line-height: 0.5;
-    }
-    h1 {
-        font-size: 1.8rem; /* Adjust job title size */
-        text-align: center;
-
-    }
+.text-section
+{
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	justify-content: center;
+	padding-right: 40px;
+	text-align: right;
+}
+.text-section .about-btn
+{
+	align-self: flex-end;
+	margin-top: 20px;
+}
+.text-section h1.NAME
+{
+	display: inline-block;
+	margin-bottom: 20px;
+	text-align: right;
+	vertical-align: middle;
+}
+.text-section p
+{
+	margin-bottom: 0px;
+	text-align: right;
+}
+.underline
+{
+	background-color: white;
+	height: 4px;
+	margin-left: -800%;
+	margin-top: 5px;
+	width: calc(100% + 800%);
+}
+@keyframes blink
+{
+	50%
+	{
+		opacity: 0;
+	}
+}
+@keyframes fadeIn
+{
+	0%
+	{
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	100%
+	{
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+@keyframes jiggle
+{
+	0%, 100%
+	{
+		transform: rotate(0deg);
+	}
+	25%
+	{
+		transform: rotate(-10deg);
+	}
+	50%
+	{
+		transform: rotate(10deg);
+	}
+	75%
+	{
+		transform: rotate(-10deg);
+	}
+}
+@media (max-width: 1024px)
+{
+	.content-wrapper
+	{
+		align-items: center;
+		flex-direction: column;
+	}
+	.intro-text p
+	{
+		text-align: center;
+	}
+	.text-section
+	{
+		text-align: center;
+	}
+	.text-section .about-btn
+	{
+		align-self: center;
+		margin-top: 20px;
+	}
+	.text-section h1.NAME
+	{
+		display: inline-block;
+		margin-bottom: 20px;
+		text-align: center;
+		vertical-align: middle;
+	}
+	.text-section p
+	{
+		margin-bottom: 0px;
+		text-align: center;
+	}
+}
+@media (max-width: 500px)
+{
+	.underline
+	{
+		margin-left: -675%;
+		width: calc(100% + 700%);
+	}
+}
+@media (max-width: 768px)
+{
+	#changing-text
+	{
+		font-size: 1.6rem;
+		margin-bottom: 5px;
+	}
+	#overlay-menu
+	{
+		left: 50%;
+		width: 50%;
+	}
+	.about-btn
+	{
+		font-size: 1rem;
+		margin-top: 10px;
+		padding: 10px 20px;
+	}
+	.content-wrapper
+	{
+		align-items: center;
+		flex-direction: column;
+		padding: 20px;
+		text-align: center;
+	}
+	.intro-text p
+	{
+		font-size: 1.2rem;
+		margin: 0 0 10px;
+	}
+	.menu-toggle
+	{
+		display: flex;
+	}
+	.nav-links
+	{
+		display: none;
+	}
+	.profile-image
+	{
+		display: block;
+		margin: 0 auto;
+		margin-bottom: 10px;
+		margin-top: 70px;
+		max-width: 300px;
+		order: 1;
+		width: 80%;
+	}
+	.social-icons
+	{
+		display: none;
+	}
+	.text-section
+	{
+		margin-top: 5px;
+		order: 2;
+		padding: 0;
+		text-align: center;
+	}
+	.text-section .about-btn
+	{
+		align-self: center;
+	}
+	.text-section h1
+	{
+		font-size: 1.6rem;
+		margin-bottom: 10px;
+	}
+	.text-section h1.NAME
+	{
+		font-size: 2.4rem;
+		margin-bottom: 0px;
+		text-align: center;
+	}
+	.text-section p
+	{
+		display: block;
+		margin: 0 auto;
+	}
+	body
+	{
+		padding-top: 50px;
+	}
+}
+@media (min-width: 500px) and (max-width: 550px)
+{
+	.underline
+	{
+		margin-left: -900%;
+		width: calc(100% + 900%);
+	}
+}
+@media (min-width: 550px) and (max-width: 600px)
+{
+	.underline
+	{
+		margin-left: -1000%;
+		width: calc(100% + 1000%);
+	}
+}
+@media (min-width: 600px) and (max-width: 650px)
+{
+	.underline
+	{
+		margin-left: -1100%;
+		width: calc(100% + 1100%);
+	}
+}
+@media (min-width: 650px) and (max-width: 700px)
+{
+	.underline
+	{
+		margin-left: -1200%;
+		width: calc(100% + 1200%);
+	}
+}
+@media (min-width: 700px) and (max-width: 768px)
+{
+	.underline
+	{
+		margin-left: -1400%;
+		width: calc(100% + 1400%);
+	}
+}
+@media (min-width: 768px) and (max-width: 1024px)
+{
+	.content-wrapper
+	{
+		flex-direction: column;
+		text-align: center;
+	}
+	.image-section
+	{
+		order: -1;
+	}
+	.NAME
+	{
+		font-size: 2.5rem;
+		line-height: 0.5;
+		text-align: center;
+	}
+	.profile-image
+	{
+		margin-bottom: 0px;
+		width: 350px;
+	}
+	body
+	{
+		padding-top: 50px;
+	}
+	h1
+	{
+		font-size: 1.8rem;
+		text-align: center;
+	}
+}
+body
+{
+	background-color: #f0f0f0;
+	font-family: Arial, sans-serif;
+	line-height: 1.6;
+	padding-top: 100px;
+}
+h1
+{
+	animation: fadeIn 1.5s ease forwards;
+	animation-delay: 0.6s;
+	color: #333;
+	font-size: 2.5rem;
+	line-height: 2.0;
+	opacity: 0;
+}
+h1.CHANGE
+{
+	line-height: 0.5;
+	padding-bottom: 10px;
+}
+h1.NAME
+{
+	line-height: 1.0;
+}
+nav
+{
+	align-items: center;
+	background-color: #fff;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	display: flex;
+	justify-content: space-between;
+	padding: 20px 30px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
+}
+p
+{
+	animation: fadeIn 1.5s ease forwards;
+	animation-delay: 0.8s;
+	color: #555;
+	font-size: 1.4rem;
+	margin: 30px 0;
+	opacity: 0;
 }

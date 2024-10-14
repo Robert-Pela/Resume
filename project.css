@@ -1,556 +1,625 @@
-/* Existing CSS (unchanged) */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    line-height: 1.6;
-}
-/* NAVBAR */
-nav {
-    width: 100%;
-    display: flex;
-    justify-content: space-between; /* Space between logo and right-side links */
-    align-items: center;
-    padding: 20px 30px; /* Standardized padding for uniform height */
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-}
-.logo {
-    font-size: 2rem;
-    color: #333;
-    font-weight: bold;
-}
-/* Nav Links */
-.nav-links {
-    list-style: none;
-    display: flex;
-    margin-left: auto; /* Push social icons to the right */
-}
-/* Logo */
-.logo a {
-    font-size: 2rem;
-    color: #333;
-    font-weight: bold;
-    text-decoration: none; /* Remove underline */
-    opacity: 0; /* Start hidden */
-    animation: fadeIn 1.5s ease forwards; /* Apply fade-in animation */
-}
-
-/* Nav Links Animation */
-.nav-links li {
-    opacity: 0; /* Start hidden */
-    margin-top: 20px; /* Start slightly lower */
-    animation: fadeIn 1.5s ease forwards; /* Apply fade-in animation */
-    animation-delay: 0.3s; /* Delay for staggered effect */
-}
-
-.nav-links li {
-    display: flex;
-    align-items: center; /* Center the links vertically */
-}
-
-.nav-links li a {
-    color: #333;
-    text-decoration: none;
-    font-size: 1.4rem;
-    position: relative;
-    transition: all 0.3s ease;
-    height: 50px; /* Set a consistent height */
-    display: flex; /* Make the anchor a flex container */
-    align-items: center; /* Center the text vertically */
-    padding: 0 15px; /* Adjusted padding for uniform spacing */}
-.nav-links li a:hover {
-    color: #0073e6;   
-}
-.nav-links li a.active::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 4px;
-    background-color: #0073e6;
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-}
-/* Active Nav Link */
-.nav-links li a.active {
-    font-weight: bold; /* Make the active link bold */
-    color: #000000; /* Optionally, add a different color for the active link */
-}
-.nav-links li a.active:hover {
-    color: #005bb5; /* Optionally, change the hover color for the active link */
-}
-/* Social Media Icons in the nav bar */
-.social-icons {
-    display: flex;
-    align-items: center; /* Center vertically */
-    margin-left: 20px; /* Space between nav links and social icons */
-}
-/* Social Media Icons Animation */
-.social-icons a {
-    opacity: 0; /* Start hidden */
-    margin-top: 20px; /* Start slightly lower */
-    animation: fadeIn 1.5s ease forwards; /* Apply fade-in animation */
-    animation-delay: 0.7s; /* Delay for staggered effect */
-    animation-fill-mode: forwards; /* Ensure final state is maintained */
-}
-
-/* Fade-in animation */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px); /* Start lower */
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0); /* End at original position */
-    }
-}
-.social-icons a {
-    color: #333;
-    font-size: 1.8rem;
-    transition: color 0.3s;
-    margin-left: 15px; /* Space between icons */
-
-}
-.social-icons i {
-    font-size: 30px; /* Change this value to adjust the icon size */
-    color: #333; /* Optional: Change color if needed */
-    transition: transform 0.3s, filter 0.3s; /* Smooth hover effect */
-}
-.social-icons i:hover {
-    transform: scale(1.1); /* Enlarge on hover */
-    filter: brightness(0) saturate(1000%) invert(37%) sepia(100%) saturate(2116%) hue-rotate(203deg) brightness(97%) contrast(100%); /* Blue color */
-}
-/* Overlay Social Media Icons Styling */
-.overlay-social-icons {
-    display: flex;
-    justify-content: center; /* Center icons horizontally in the overlay */
-    margin-top: 20px; /* Space above the icons */
-}
-.overlay-social-icons a {
-    margin: 0 10px; /* Space between icons */
-    font-size: 40px; /* Adjust icon size */
-    color: #ffffff; /* Default color for icons */
-    transition: transform 0.3s, color 0.3s; /* Smooth hover effect */
-}
-.overlay-social-icons a:hover {
-    transform: scale(1.1); /* Enlarge on hover */
-    color: #ffd700;
-}
-
-/* Logo */
-.logo a {
-    font-size: 2rem;
-    color: #333;
-    font-weight: bold;
-    text-decoration: none; /* Remove underline */
-}
-.logo a:hover {
-    color: #0073e6; /* Add a hover effect to the logo */
-}
-/* Mobile Nav Bar (Hamburger) */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-.menu-toggle .bar {
-    width: 25px;
-    height: 3px;
-    background-color: #333;
-    margin: 4px 0;
-    transition: 0.3s;
-}
-/* Overlay Menu Styling */
-#overlay-menu {
-    display: block; /* Ensure it is block for the transition */
-    position: fixed;
-    top: 0;
-    right: 0; /* Start on the right */
-    width: 280px;
-    height: 100%;
-    background-color: #7c7caf;
-    z-index: 9999;
-    text-align: center;
-    padding-top: 50px;
-    transform: translateX(100%); /* Start off-screen */
-    transition: transform 0.5s ease; /* Smooth transition for sliding effect */
-}
-/* When the overlay is active */
-#overlay-menu.active {
-    transform: translateX(0); /* Slide in to view */
-}
-.overlay-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding-top: 40px; /* Bring content closer to the top */
-}
-.overlay-nav-links {
-    list-style-type: none;
-    padding: 0;
-}
-.overlay-nav-links li {
-    margin: 15px 0;
-}
-.overlay-nav-links li a {
-    font-size: 1.8rem; /* Adjust font size for readability */
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-.overlay-nav-links li a:hover {
-    color: #ffd700; /* Gold color on hover */
-}
-/* Close Button */
-.close-btn {
-    position: absolute;
-    top: 0px;
-    right: 20px;
-    padding: 10px 0; /* Vertical padding */
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
-}
-.close-btn :hover {
-    color: #ffd700;
-}
-.close-btn span {
-    font-size: 2rem;
-    color: white;
-    cursor: pointer;
-    text-decoration: none;
-}
-/* Underline Effect */
-.underline {
-    width: calc(100% + 800%); /* Keep the same for mobile */
-    height: 4px; /* Height of the underline */
-    background-color: white; /* Color of the underline */
-    margin-top: 5px; /* Space between the text and underline */
-    margin-left: -800%; /* Negative margin for mobile */
-}
-/* Media Queries for Responsiveness */
-@media (max-width: 500px) {
-    .underline {
-        width: calc(100% + 700%); /* Keep the same for mobile */
-        margin-left: -675%; /* Negative margin for mobile */
-    }
-}
-@media (min-width: 500px) and (max-width: 550px) {
-    .underline {
-        width: calc(100% + 900%); /* Keep the same for mobile */
-        margin-left: -900%; /* Negative margin for mobile */
-    }
-}
-@media (min-width: 550px) and (max-width: 600px) {
-    .underline {
-        width: calc(100% + 1000%); /* Keep the same for mobile */
-        margin-left: -1000%; /* Negative margin for mobile */
-    }
-}
-@media (min-width: 600px) and (max-width: 650px) {
-    .underline {
-        width: calc(100% + 1100%); /* Keep the same for mobile */
-        margin-left: -1100%; /* Negative margin for mobile */
-    }
-}
-@media (min-width: 650px) and (max-width: 700px) {
-    .underline {
-        width: calc(100% + 1200%); /* Keep the same for mobile */
-        margin-left: -1200%; /* Negative margin for mobile */
-    }
-}
-@media (min-width: 700px) and (max-width: 768px) {
-    .underline {
-        width: calc(100% + 1400%); /* Keep the same for mobile */
-        margin-left: -1400%; /* Negative margin for mobile */
-    }
-}
-/* Header */
-header {
-    text-align: center;
-    padding: 150px 0 50px; /* Increased padding to move the header down */
-    background-color: #f0f0f0; /* White background */
-    color: #333;
-}
-/* Header Text Animation */
-header h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    color: #7c7caf;
-    opacity: 0; /* Start hidden */
-    animation: fadeInUp 1s ease forwards; /* Apply the fade-in animation */
-}
-header p, .view-all-projects {
-    opacity: 0; /* Start hidden */
-    animation: fadeInUp 1s ease forwards;
-    animation-delay: 0.5s; /* Delay the animation for the paragraph and button */
-}
-header p {
-    font-size: 1.2rem;
-    color: #555;
-}
-/* Jiggle Animation */
-.name-letter {
-    display: inline-block;
-    transition: transform 0.2s;
-    font-size: 3.0rem; /* Increased font size for the letters */
-    color: #0073e6;
-}
-.name-letter:hover {
-    animation: jiggle 0.5s ease-in-out;
-}
-@keyframes jiggle {
-    0%, 100% {
-        transform: rotate(0deg);
-    }
-    25% {
-        transform: rotate(-20deg);
-    }
-    50% {
-        transform: rotate(30deg);
-    }
-    75% {
-        transform: rotate(-20deg);
-    }
-}
-/* New Styles Below (for 9 projects layout) */
-/* View All Projects Button */
-.view-all-projects {
-    text-align: center;
-    margin: 10px auto; /* Adjusted margin for more spacing */
-    margin-bottom: 10px; /* Reduce space below the button */
-}
-.view-projects-btn {
-    background-color: #0073e6;
-    color: white;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    border-radius: 30px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 15px rgba(0, 115, 230, 0.3); /* Enhanced shadow */
-}
-.view-projects-btn:hover {
-    background-color: #005bb5;
-    box-shadow: 0 12px 22px rgba(0, 115, 230, 0.4); /* Bigger shadow on hover */   
-}
-.view-projects-btn:active {
-    background-color: #003d7a;
-    transform: translateY(0); /* Return to original position when clicked */
-    box-shadow: 0 6px 12px rgba(0, 115, 230, 0.2); /* Pressed down shadow */
-}
-/* Portfolio Section */
-.portfolio-section {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Default: 3 cards per row on desktop */
-    gap: 20px; /* Space between cards */
-    padding: 40px; /* Padding around the section */
-    max-width: 100%; /* Ensure it uses full width */
-    margin: 0 auto; /* Center the section */
-    padding-top: 0px;
-}
-/* Project Card */
-/* Project Card Animation */
-.project-card {
-    opacity: 0; /* Start hidden */
-    transform: translateY(30px); /* Start slightly below */
-    animation: fadeInUp 1s ease forwards; /* Apply animation */
-    overflow: hidden;
-    animation-delay: 0.1s; /* Delay to create staggered effect */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Increased shadow for depth */
-    height: 500px; /* Allow card to grow with content */
-    padding: 30px; /* Padding around the content */
-    padding-bottom: 0px;
-}
-.project-card:hover {
-    background-color: #f0f0f0; /* Change to a slightly darker color on hover */
-    transform: translateY(-30px); /* Slight lift on hover */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
-}
-.project-card:nth-child(2) {
-    animation-delay: 0.1s; /* Slightly delay for the second card */
-}
-.project-card:nth-child(3) {
-    animation-delay: 0.1s;
-}
-/* Continue for all cards */
-.project-card:nth-child(4) {
-    animation-delay: 0.7s;
-}
-.project-card:nth-child(5) {
-    animation-delay: .9s;
-}
-.project-card:nth-child(6) {
-    animation-delay: 1.1s;
-}
-.project-card:nth-child(7) {
-    animation-delay: 1.3s;
-}
-.project-card:nth-child(8) {
-    animation-delay: 1.5s;
-}
-.project-card:nth-child(9) {
-    animation-delay: 1.7s;
-}
-.project-card:hover {
-    transform: scale(1.03); /* Slightly zoom in on hover */
-}
-/* Image Styles */
-.project-card img {
-    width: calc(100%); /* Take full width minus padding */
-    height: 300px; /* Adjusted height for desktop */
-    border-radius: 5px; /* Slight rounding of the image edges */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for image */
-    object-fit: cover; /* Cover the image while maintaining aspect ratio */
-}
-/* Hover Effect for Image */
-.project-card img:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
-}   
-.project-info {
-    padding: 10px; /* Padding in project info */
-    text-align: left;
-}
-.project-info h2 {
-    font-size: 1.6rem; /* Heading size */
-    margin-bottom: 10px; /* Space below heading */
-}
-.project-info p {
-    font-size: 1.2rem; /* Description size */
-    color: #555;
-    margin-bottom: 15px; /* Space below description */
-}
-/* Project Link Button */
-.project-link {
-    text-decoration: none;
-    color: white;
-    background-color: #0073e6;
-    padding: 10px 20px; /* Button padding */
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-.project-link:hover {
-    background-color: #005bb5;
-}
-/* Fade-in and slide-up animation for text and cards */
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(30px); /* Start slightly below */
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0); /* End at the original position */
-    }
-}
-.project-info p .tech-used {
-    color: #0073e6; /* Blue color for the technologies used */
-}
-.project-info h2 a {
-    margin-left: 10px; /* Space between the text and the icon */
-    color: #7c7caf; /* Purple link */
-    text-decoration: none; /* Remove underline */
-}
-.project-info h2 a:hover {
-    color: #0380fd; /* Darker blue on hover */
-}
-/* Ensure the image and text are separate, and the image scales properly */
-.project-card {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Increased shadow for depth */
-    transition: transform 0.3s ease;
-    overflow: hidden;
-    margin-bottom: 20px; /* Space between the cards */
-    display: flex;
-    flex-direction: column;
-}
-/* Ensure the text below the image is visible and not covered */
-.project-info {
-    padding: 20px; /* Padding for the text area */
-    text-align: left;
-}
-.project-info h2 {
-    font-size: 1.6rem;
-    margin-bottom: 10px; /* Space below the heading */
-}
-.project-info p {
-    font-size: 1.2rem;
-    color: #555;
-    margin-bottom: 15px; /* Space below the description */
-}
-/* Hide social icons on mobile */
-@media (max-width: 768px) {
-    .name-letter
-    {
-        font-size: 2.4rem;
-    }
-  
-    .social-icons {
-        display: none; /* Hide social links on mobile */
-    }
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-    }
-    .project-card img {
-        height: 200px; /* Adjust the height for smaller screens */
-    }
-    .portfolio-section {
-        grid-template-columns: 1fr; /* 1 project per row on mobile */
-    }
-    .menu-toggle {
-        display: flex;
-    }
-    .nav-links.active {
-        display: flex;
-    }
-    /* For mobile, the overlay takes full width */
-    #overlay-menu {
-        left: 50%;
-        width: 50%;
-    }
-    .project-info h2 {
-        font-size: 1.2rem; /* Heading size */
-    }   
-    .project-info p {
-        font-size: 1.0rem; /* Description size */
-    }
-    .project-card {
-        border-radius: 10px;
-        height: 400px; /* Allow card to grow with content */
-        padding: 30px; /* Padding around the content */
-        padding-bottom: 0px;
-    }
-}
-@media (min-width: 769px) and (max-width: 1024px) {
-    .portfolio-section {
-        grid-template-columns: 1fr; /* 1 project per row for small desktops/tablets */
-    }
-    .project-card img {
-        height: 300px; /* Adjust the height for tablet screens */
-    }
-    /* Portfolio Section */
-    .portfolio-section {
-    display: grid;
-    gap: 20px; /* Space between cards */
-    padding: 40px; /* Padding around the section */
-    max-width: 70%; /* Ensure it uses full width */
-    margin: 0 auto; /* Center the section */
-    padding-top: 0px;
-    }
+#overlay-menu
+{
+	background-color: #7c7caf;
+	display: block;
+	height: 100%;
+	padding-top: 50px;
+	position: fixed;
+	right: 0;
+	text-align: center;
+	top: 0;
+	transform: translateX(100%);
+	transition: transform 0.5s ease;
+	width: 280px;
+	z-index: 9999;
+}
+#overlay-menu.active
+{
+	transform: translateX(0);
+}
+*
+{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+.close-btn
+{
+	color: white;
+	cursor: pointer;
+	font-size: 2rem;
+	padding: 10px 0;
+	position: absolute;
+	right: 20px;
+	top: 0px;
+}
+.close-btn :hover
+{
+	color: #ffd700;
+}
+.close-btn span
+{
+	color: white;
+	cursor: pointer;
+	font-size: 2rem;
+	text-decoration: none;
+}
+.logo
+{
+	color: #333;
+	font-size: 2rem;
+	font-weight: bold;
+}
+.logo a
+{
+	color: #333;
+	font-size: 2rem;
+	font-weight: bold;
+	text-decoration: none;
+}
+.logo a
+{
+	animation: fadeIn 1.5s ease forwards;
+	color: #333;
+	font-size: 2rem;
+	font-weight: bold;
+	opacity: 0;
+	text-decoration: none;
+}
+.logo a:hover
+{
+	color: #0073e6;
+}
+.menu-toggle
+{
+	cursor: pointer;
+	display: none;
+	flex-direction: column;
+}
+.menu-toggle .bar
+{
+	background-color: #333;
+	height: 3px;
+	margin: 4px 0;
+	transition: 0.3s;
+	width: 25px;
+}
+.name-letter
+{
+	color: #0073e6;
+	display: inline-block;
+	font-size: 3.0rem;
+	transition: transform 0.2s;
+}
+.name-letter:hover
+{
+	animation: jiggle 0.5s ease-in-out;
+}
+.nav-links
+{
+	display: flex;
+	list-style: none;
+	margin-left: auto;
+}
+.nav-links li
+{
+	animation: fadeIn 1.5s ease forwards;
+	animation-delay: 0.3s;
+	margin-top: 20px;
+	opacity: 0;
+}
+.nav-links li
+{
+	align-items: center;
+	display: flex;
+}
+.nav-links li a
+{
+	align-items: center;
+	color: #333;
+	display: flex;
+	font-size: 1.4rem;
+	height: 50px;
+	padding: 0 15px;
+	position: relative;
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+.nav-links li a.active
+{
+	color: #000000;
+	font-weight: bold;
+}
+.nav-links li a.active::after
+{
+	background-color: #0073e6;
+	bottom: -5px;
+	content: '';
+	display: block;
+	height: 4px;
+	left: 0;
+	position: absolute;
+	width: 100%;
+}
+.nav-links li a.active:hover
+{
+	color: #005bb5;
+}
+.nav-links li a:hover
+{
+	color: #0073e6;
+}
+.overlay-content
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	padding-top: 40px;
+}
+.overlay-nav-links
+{
+	list-style-type: none;
+	padding: 0;
+}
+.overlay-nav-links li
+{
+	margin: 15px 0;
+}
+.overlay-nav-links li a
+{
+	color: white;
+	font-size: 1.8rem;
+	text-decoration: none;
+	transition: color 0.3s;
+}
+.overlay-nav-links li a:hover
+{
+	color: #ffd700;
+}
+.overlay-social-icons
+{
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+.overlay-social-icons a
+{
+	color: #ffffff;
+	font-size: 40px;
+	margin: 0 10px;
+	transition: transform 0.3s, color 0.3s;
+}
+.overlay-social-icons a:hover
+{
+	color: #ffd700;
+	transform: scale(1.1);
+}
+.portfolio-section
+{
+	display: grid;
+	gap: 20px;
+	grid-template-columns: repeat(3, 1fr);
+	margin: 0 auto;
+	max-width: 100%;
+	padding: 40px;
+	padding-top: 0px;
+}
+.project-card
+{
+	animation: fadeInUp 1s ease forwards;
+	animation-delay: 0.1s;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+	height: 500px;
+	opacity: 0;
+	overflow: hidden;
+	padding: 30px;
+	padding-bottom: 0px;
+	transform: translateY(30px);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card
+{
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
+	overflow: hidden;
+	transition: transform 0.3s ease;
+}
+.project-card img
+{
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	height: 300px;
+	object-fit: cover;
+	width: calc(100%);
+}
+.project-card img:hover
+{
+	transform: scale(1.05);
+}
+.project-card:hover
+{
+	transform: scale(1.03);
+}
+.project-card:hover
+{
+	background-color: #f0f0f0;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+	transform: translateY(-30px);
+}
+.project-card:nth-child(2)
+{
+	animation-delay: 0.1s;
+}
+.project-card:nth-child(3)
+{
+	animation-delay: 0.1s;
+}
+.project-card:nth-child(4)
+{
+	animation-delay: 0.7s;
+}
+.project-card:nth-child(5)
+{
+	animation-delay: .9s;
+}
+.project-card:nth-child(6)
+{
+	animation-delay: 1.1s;
+}
+.project-card:nth-child(7)
+{
+	animation-delay: 1.3s;
+}
+.project-card:nth-child(8)
+{
+	animation-delay: 1.5s;
+}
+.project-card:nth-child(9)
+{
+	animation-delay: 1.7s;
+}
+.project-info
+{
+	padding: 20px;
+	text-align: left;
+}
+.project-info
+{
+	padding: 10px;
+	text-align: left;
+}
+.project-info h2
+{
+	font-size: 1.6rem;
+	margin-bottom: 10px;
+}
+.project-info h2
+{
+	font-size: 1.6rem;
+	margin-bottom: 10px;
+}
+.project-info h2 a
+{
+	color: #7c7caf;
+	margin-left: 10px;
+	text-decoration: none;
+}
+.project-info h2 a:hover
+{
+	color: #0380fd;
+}
+.project-info p
+{
+	color: #555;
+	font-size: 1.2rem;
+	margin-bottom: 15px;
+}
+.project-info p
+{
+	color: #555;
+	font-size: 1.2rem;
+	margin-bottom: 15px;
+}
+.project-info p .tech-used
+{
+	color: #0073e6;
+}
+.project-link
+{
+	background-color: #0073e6;
+	border-radius: 5px;
+	color: white;
+	padding: 10px 20px;
+	text-decoration: none;
+	transition: background-color 0.3s ease;
+}
+.project-link:hover
+{
+	background-color: #005bb5;
+}
+.social-icons
+{
+	align-items: center;
+	display: flex;
+	margin-left: 20px;
+}
+.social-icons a
+{
+	color: #333;
+	font-size: 1.8rem;
+	margin-left: 15px;
+	transition: color 0.3s;
+}
+.social-icons a
+{
+	animation: fadeIn 1.5s ease forwards;
+	animation-delay: 0.7s;
+	animation-fill-mode: forwards;
+	margin-top: 20px;
+	opacity: 0;
+}
+.social-icons i
+{
+	color: #333;
+	font-size: 30px;
+	transition: transform 0.3s, filter 0.3s;
+}
+.social-icons i:hover
+{
+	filter: brightness(0) saturate(1000%) invert(37%) sepia(100%) saturate(2116%) hue-rotate(203deg) brightness(97%) contrast(100%);
+	transform: scale(1.1);
+}
+.underline
+{
+	background-color: white;
+	height: 4px;
+	margin-left: -800%;
+	margin-top: 5px;
+	width: calc(100% + 800%);
+}
+.view-all-projects
+{
+	margin: 10px auto;
+	margin-bottom: 10px;
+	text-align: center;
+}
+.view-projects-btn
+{
+	background-color: #0073e6;
+	border-radius: 30px;
+	box-shadow: 0 8px 15px rgba(0, 115, 230, 0.3);
+	color: white;
+	font-size: 1.2rem;
+	padding: 15px 30px;
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+.view-projects-btn:active
+{
+	background-color: #003d7a;
+	box-shadow: 0 6px 12px rgba(0, 115, 230, 0.2);
+	transform: translateY(0);
+}
+.view-projects-btn:hover
+{
+	background-color: #005bb5;
+	box-shadow: 0 12px 22px rgba(0, 115, 230, 0.4);
+}
+@keyframes fadeIn
+{
+	0%
+	{
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	100%
+	{
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+@keyframes fadeInUp
+{
+	0%
+	{
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	100%
+	{
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+@keyframes jiggle
+{
+	0%, 100%
+	{
+		transform: rotate(0deg);
+	}
+	25%
+	{
+		transform: rotate(-20deg);
+	}
+	50%
+	{
+		transform: rotate(30deg);
+	}
+	75%
+	{
+		transform: rotate(-20deg);
+	}
+}
+@media (max-width: 500px)
+{
+	.underline
+	{
+		margin-left: -675%;
+		width: calc(100% + 700%);
+	}
+}
+@media (max-width: 768px)
+{
+	#overlay-menu
+	{
+		left: 50%;
+		width: 50%;
+	}
+	.menu-toggle
+	{
+		display: flex;
+	}
+	.name-letter
+	{
+		font-size: 2.4rem;
+	}
+	.nav-links
+	{
+		display: none;
+		flex-direction: column;
+		text-align: center;
+		width: 100%;
+	}
+	.nav-links.active
+	{
+		display: flex;
+	}
+	.portfolio-section
+	{
+		grid-template-columns: 1fr;
+	}
+	.project-card
+	{
+		border-radius: 10px;
+		height: 400px;
+		padding: 30px;
+		padding-bottom: 0px;
+	}
+	.project-card img
+	{
+		height: 200px;
+	}
+	.project-info h2
+	{
+		font-size: 1.2rem;
+	}
+	.project-info p
+	{
+		font-size: 1.0rem;
+	}
+	.social-icons
+	{
+		display: none;
+	}
+}
+@media (min-width: 500px) and (max-width: 550px)
+{
+	.underline
+	{
+		margin-left: -900%;
+		width: calc(100% + 900%);
+	}
+}
+@media (min-width: 550px) and (max-width: 600px)
+{
+	.underline
+	{
+		margin-left: -1000%;
+		width: calc(100% + 1000%);
+	}
+}
+@media (min-width: 600px) and (max-width: 650px)
+{
+	.underline
+	{
+		margin-left: -1100%;
+		width: calc(100% + 1100%);
+	}
+}
+@media (min-width: 650px) and (max-width: 700px)
+{
+	.underline
+	{
+		margin-left: -1200%;
+		width: calc(100% + 1200%);
+	}
+}
+@media (min-width: 700px) and (max-width: 768px)
+{
+	.underline
+	{
+		margin-left: -1400%;
+		width: calc(100% + 1400%);
+	}
+}
+@media (min-width: 769px) and (max-width: 1024px)
+{
+	.portfolio-section
+	{
+		display: grid;
+		gap: 20px;
+		margin: 0 auto;
+		max-width: 70%;
+		padding: 40px;
+		padding-top: 0px;
+	}
+	.portfolio-section
+	{
+		grid-template-columns: 1fr;
+	}
+	.project-card img
+	{
+		height: 300px;
+	}
+}
+body
+{
+	background-color: #f0f0f0;
+	font-family: Arial, sans-serif;
+	line-height: 1.6;
+}
+header
+{
+	background-color: #f0f0f0;
+	color: #333;
+	padding: 150px 0 50px;
+	text-align: center;
+}
+header h1
+{
+	animation: fadeInUp 1s ease forwards;
+	color: #7c7caf;
+	font-size: 3rem;
+	margin-bottom: 20px;
+	opacity: 0;
+}
+header p
+{
+	color: #555;
+	font-size: 1.2rem;
+}
+header p, .view-all-projects
+{
+	animation: fadeInUp 1s ease forwards;
+	animation-delay: 0.5s;
+	opacity: 0;
+}
+nav
+{
+	align-items: center;
+	background-color: #fff;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	display: flex;
+	justify-content: space-between;
+	padding: 20px 30px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
 }
