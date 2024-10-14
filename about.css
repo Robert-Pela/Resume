@@ -697,7 +697,7 @@ p {
         grid-template-columns: repeat(4, 1fr); /* 4 icons on half-desktop */
         gap: 10px; /* Reduced gap between cards */
         max-width: 400px; /* Limit the maximum width */
-        justify-items: center; /* Center items in the grid */
+        justify-items: start; /* Center items in the grid */
     }
     .skills
     {
