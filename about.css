@@ -77,6 +77,9 @@ nav {
     font-weight: bold;
     color: #000;
 }
+.nav-links li a.active:hover {
+    color: #005bb5; /* Optionally, change the hover color for the active link */
+}
 
 .nav-links li a.active::after {
     content: '';
@@ -500,16 +503,16 @@ p {
     box-shadow: 0 4px 10px rgba(58, 73, 102, 0.816); /* Unreal Engine - Dark Gray shadow */
 }
 
-.unity-card {
-    box-shadow: 0 4px 10px rgba(40, 40, 40, 0.728); /* Unity - Dark Gray shadow */
+.go-card {
+    box-shadow: 0 4px 10px rgba(10, 84, 154, 0.728); /* Go - Blue shadow */
 }
 
 .lua-card {
     box-shadow: 0 4px 10px rgba(0, 122, 204, 0.5); /* Lua - Blue shadow */
 }
 
-.haxe-card {
-    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5); /* Haxe - Red shadow */
+.ruby-card {
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5); /* Ruby - Red shadow */
 }
 
 .jira-card {
